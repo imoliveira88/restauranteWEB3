@@ -14,9 +14,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "prato")
 @SessionScoped
 @Entity
-@NamedQuery(name = "Prato.RetornaId",
-            query= " SELECT max(u.id) FROM Prato u " +
-                   " WHERE u.nome = :nome")
+@NamedQuery(name = "Prato.RetornaId",query= " SELECT max(u.id) FROM Prato u WHERE u.nome = :nome")
 @Table(name = "TB_PRATO")
 public class Prato implements Serializable, BaseEntity {
     private static final long serialVersionUID = 1L;

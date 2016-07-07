@@ -29,7 +29,7 @@ public class Cartao implements Serializable{
     private Long id;
     
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ID_BANDEIRA", referencedColumnName = "ID_BANDEIRA")
     private Bandeira bandeira;
     

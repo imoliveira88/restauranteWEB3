@@ -30,7 +30,7 @@ public class Bandeira implements Serializable {
     @Column(name = "ID_BANDEIRA")
     private Long id;
     
-    @OneToMany(mappedBy = "bandeira", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bandeira", fetch = FetchType.LAZY)
     private final List<Cartao> cartoes;
     
     @NotBlank
