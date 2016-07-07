@@ -13,12 +13,12 @@
         <ui:composition template="/templates/masterLayout.xhtml">
             
             <ui:define name="windowTitle">
-                Card�pio
+                Cardápio
             </ui:define> 
 
          <ui:define name="content">
              <h:form enctype="multipart/form-data">
-                 <p:fieldset legend="Card�pio" style="margin-bottom:20px">
+                 <p:fieldset legend="Cardapio" style="margin-bottom:20px">
                      <p:dataTable var="prato" value="#{pratoMB.pratos}" >
                          <p:column>
                              <f:facet name="header">Foto</f:facet>
@@ -29,11 +29,11 @@
                              <h:outputText value="#{prato.nome}"/>
                          </p:column>
                          <p:column>
-                             <f:facet name="header">Pre�o</f:facet>
+                             <f:facet name="header">Preço</f:facet>
                              <h:outputText value="#{prato.preco}"/>
                          </p:column>
                          <p:column>
-                             <f:facet name="header">Descri��o</f:facet>
+                             <f:facet name="header">Descrição</f:facet>
                              <h:outputText value="#{prato.descricao}"/>
                          </p:column>
                      </p:dataTable>

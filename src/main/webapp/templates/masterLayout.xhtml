@@ -11,15 +11,23 @@
    </h:head>
    
    <h:body>
+       
       <div id="heading">
          <ui:insert name="heading">
             <ui:include src="/sections/restaurante/header.xhtml"/>
          </ui:insert>
       </div>      
       
-      <div id="content">
-         <ui:insert name="content"/>
-      </div>
+       <table id="corpo">
+           <tr>
+               <td>
+                   <div id="content">
+                       <ui:insert name="content"/>
+                   </div>
+               </td>
+           </tr>
+       </table>
+
       <ui:debug/>
    </h:body>
 </html>
