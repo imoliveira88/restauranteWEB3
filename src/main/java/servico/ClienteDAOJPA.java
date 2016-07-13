@@ -7,10 +7,6 @@ package servico;
 
 import modelo.Cliente;
 
-/**
- *
- * @author Iury
- */
 public class ClienteDAOJPA extends DAOGenericoJPA<Long,Cliente>{
 
     public ClienteDAOJPA() {

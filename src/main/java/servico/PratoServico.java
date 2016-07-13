@@ -5,10 +5,8 @@
  */
 package servico;
 
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.util.List;
 import modelo.Prato;
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 

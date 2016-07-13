@@ -6,12 +6,7 @@
 package servico;
 
 import modelo.ItemPedido;
-import javax.persistence.EntityManager;
 
-/**
- *
- * @author Iury
- */
 public class ItemPedidoServico extends DAOGenericoJPA<Long, ItemPedido>{
 
     public ItemPedidoServico() {

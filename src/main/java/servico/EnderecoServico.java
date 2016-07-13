@@ -6,7 +6,6 @@
 package servico;
 
 import java.util.List;
-import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import modelo.Endereco;
 
