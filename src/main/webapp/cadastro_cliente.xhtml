@@ -19,8 +19,8 @@
          <ui:define name="content">
              <h2>Cadastro de cliente</h2>
 
-             <h:form class="formGeral">
-                 <p:growl id="msgs" showDetail="true" />
+             <h:form id="cadastro" class="formGeral">
+                 <p:growl id="msgs" showDetail="true" autoUpdate="true" life="6000"/>
 
                  <p:fieldset legend="Informações Básicas" style="margin-bottom:20px">
                      <h:panelGrid columns="2" id = "basico"  cellpadding="5">
@@ -40,8 +40,8 @@
                  <p:fieldset legend="Endereço" style="margin-bottom:20px">
                      <h:panelGrid columns="2" id = "endereco"  cellpadding="5">
 
-                         <p:outputLabel for="tipo" value="Tipo Logradouro: " />
-                         <p:selectOneMenu id="tipo" value="#{cadastroC.tipologradouro}">
+                         <p:outputLabel for="tipoLogradouro" value="Tipo Logradouro: " />
+                         <p:selectOneMenu id="tipoLogradouro" value="#{cadastroC.tipologradouro}">
                              <f:selectItem itemLabel="RUA" itemValue="RUA" />
                              <f:selectItem itemLabel="AVENIDA" itemValue="AVENIDA" />
                              <f:selectItem itemLabel="CONJUNTO" itemValue="CONJUNTO" />
@@ -99,7 +99,7 @@
                             <h:panelGrid columns="2" id = "cartao"  cellpadding="5">
 
                                 <p:outputLabel value="Bandeira: " for="bandeira" />
-                                <h:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px" requiredMessage="Valor é obrigatório" converter="simpleConverter">
+                                <h:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px" converter="simpleConverter">
                                     <f:selectItems value="#{bandeiraMB.listaBandeiras}" var="band" itemValue="#{band}"/>
                                 </h:selectOneMenu>
                                 <f:attribute name="escolha" value="#{band}" />
@@ -118,9 +118,7 @@
              </h:form>
          </ui:define>
       </ui:composition>
-        
-          
-        
+               
    </h:body>
 </html>
 

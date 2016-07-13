@@ -5,6 +5,7 @@
  */
 package persistencia.jpa;
 
+import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import modelo.Bandeira;
@@ -46,5 +47,18 @@ public class BandeiraDAOJPA extends DAOGenericoJPA<Long, Bandeira> implements Ba
             super.getEm().persist(b);
         }
         super.getEm().getTransaction().commit();
+    }
+    
+    public Bandeira retornaBandeira(String bandeira){
+        TypedQuery<Bandeira> query = super.getEm().createNamedQuery("Bandeira.BANDEIRA_POR_NOME", Bandeira.class);
+        
+        query.setParameter(1, bandeira);
+        
+       return query.getSingleResult();
+    }
+    
+    public List<Bandeira> todasBandeiras(){
+        TypedQuery<Bandeira> query = super.getEm().createNamedQuery("Bandeira.TODAS", Bandeira.class);
+        return query.getResultList();
     }
 }

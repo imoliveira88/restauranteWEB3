@@ -16,27 +16,21 @@
             </ui:define> 
 
             <ui:define name="content">
-                <h:form class="formGeral">
-                    <p:growl id="msgs" showDetail="true" />
+                <h:form id="FormLogin" class="formGeral">
+                    <p:growl id="growl" showDetail="true" life="6000" autoUpdate="true"/>
                     <p:fieldset legend="Login" style="margin-bottom:20px">
-                        <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                         <h:panelGrid columns="2" cellpadding="5">
 
                             <h:outputText value="Login (telefone): " />
-                            <h:inputText value="#{usuario.telefone}" size="20" />
+                            <h:inputText id="telefone" value="#{usuario.telefone}" size="20" required="true"/>
 
                             <h:outputText value="Senha: " />
-                            <h:inputSecret value="#{usuario.senha}" size="20" />
+                            <h:inputSecret id="senha" value="#{usuario.senha}" size="20" required="true"/>
 
                             <h:commandButton value="Login" action="#{usuario.doLogin()}" class="botao"/>
 
                             <f:facet name="footer">
-                                <a href='faces/cadastro_cliente.xhtml'>N�o tem cadastro? Clique aqui!</a>
-                                <br/>
-                                <br/>
-                                <h:outputText value="#{cadastroC.mensagem}"/>
-                                <br/>
-                                <h:outputText value="#{usuario.mensagem}"/>
+                                <a href='faces/cadastro_cliente.xhtml'>Nao tem cadastro? Clique aqui!</a>
                             </f:facet>
                         </h:panelGrid>
                     </p:fieldset>
