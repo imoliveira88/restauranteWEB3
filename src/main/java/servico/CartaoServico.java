@@ -1,21 +1,16 @@
-package persistencia.jpa;
+package servico;
 
 import java.util.List;
 import modelo.Cartao;
 import javax.persistence.NoResultException;
-import persistencia.CartaoDAO;
 
-/**
- *
- * @author Iury
- */
-public class CartaoDAOJPA extends DAOGenericoJPA<Long, Cartao> implements CartaoDAO{
+public class CartaoServico extends DAOGenericoJPA<Long, Cartao>{
 
-    public CartaoDAOJPA() {
+    public CartaoServico() {
         super();
     }
 
-    @Override
+
     public Cartao getById(long pk) {
         return super.getById(pk);
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.util.List;
@@ -11,15 +11,10 @@ import modelo.Prato;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import persistencia.PratoDAO;
 
-/**
- *
- * @author Iury
- */
-public class PratoDAOJPA extends DAOGenericoJPA<Long, Prato> implements PratoDAO{
+public class PratoServico extends DAOGenericoJPA<Long, Prato>{
 
-    public PratoDAOJPA() {
+    public PratoServico() {
         super();
     }
     

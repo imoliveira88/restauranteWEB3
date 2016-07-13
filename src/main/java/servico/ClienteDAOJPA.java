@@ -3,22 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import modelo.Cliente;
-import persistencia.ClienteDAO;
 
 /**
  *
  * @author Iury
  */
-public class ClienteDAOJPA extends DAOGenericoJPA<Long, Cliente> implements ClienteDAO{
+public class ClienteDAOJPA extends DAOGenericoJPA<Long,Cliente>{
 
     public ClienteDAOJPA() {
         super();
     }
     
-    @Override
     public Cliente getById(long pk) {
         return super.getById(pk);
     }

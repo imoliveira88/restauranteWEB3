@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia;
+package servico;
 
-import java.util.List;
 import modelo.ItemPedido;
+import javax.persistence.EntityManager;
 
 /**
  *
- * @author Magalhães Oliveira
+ * @author Iury
  */
-public interface ItemPedidoDAO {
- 
-    public void save(ItemPedido b);
- 
-    public void delete(ItemPedido b) throws Exception;
- 
+public class ItemPedidoServico extends DAOGenericoJPA<Long, ItemPedido>{
+
+    public ItemPedidoServico() {
+        super();
+    }
+    
 }

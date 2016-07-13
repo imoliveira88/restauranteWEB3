@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import modelo.Endereco;
-import persistencia.EnderecoDAO;
 
 /**
  *
  * @author Magalhães Oliveira
  */
-public class EnderecoDAOJPA extends DAOGenericoJPA<Long, Endereco> implements EnderecoDAO{
-    public EnderecoDAOJPA() {
+public class EnderecoServico extends DAOGenericoJPA<Long, Endereco>{
+    public EnderecoServico() {
         super();
     }
     
-    @Override
     public Endereco getById(long pk) {
         return super.getById(pk);
     }

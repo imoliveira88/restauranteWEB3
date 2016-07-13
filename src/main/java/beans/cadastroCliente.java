@@ -1,6 +1,6 @@
 package beans;
 
-import persistencia.jpa.ClienteDAOJPA;
+import servico.ClienteDAOJPA;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +11,6 @@ import modelo.Bandeira;
 import modelo.Cartao;
 import modelo.Cliente;
 import modelo.Endereco;
-import persistencia.*;
 
 @ManagedBean(name = "cadastroC")
 @RequestScoped

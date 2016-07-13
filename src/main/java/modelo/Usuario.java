@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
-import persistencia.jpa.UsuarioDAOJPA;
+import servico.UsuarioServico;
 
 @Entity
 @NamedQueries(value = 
@@ -118,7 +118,7 @@ public class Usuario implements Serializable {
     //Compara se o telefone digitado corresponde a um usuário válido, e, correspondendo,
     //compara a senha fornecida, com a senha que há no banco
     public boolean validaUsuario(){
-        UsuarioDAOJPA ud = new UsuarioDAOJPA();
+        UsuarioServico ud = new UsuarioServico();
         return this.senha.equals(ud.retornaSenha(this.telefone));
     }
     
@@ -132,7 +132,7 @@ public class Usuario implements Serializable {
             setMensagem("Login ou senha incorretos!");
             return "/faces/login.xhtml?faces-redirect=true";
         } else {
-            UsuarioDAOJPA ud = new UsuarioDAOJPA();
+            UsuarioServico ud = new UsuarioServico();
             this.setId(ud.retornaId(this.telefone));
             
             tipo = ud.tipoUsuario(this);

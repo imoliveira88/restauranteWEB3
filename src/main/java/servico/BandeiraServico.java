@@ -3,25 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import modelo.Bandeira;
-import persistencia.BandeiraDAO;
 
-/**
- *
- * @author Iury
- */
-public class BandeiraDAOJPA extends DAOGenericoJPA<Long, Bandeira> implements BandeiraDAO{
+public class BandeiraServico extends DAOGenericoJPA<Long, Bandeira>{
 
-    public BandeiraDAOJPA() {
+    public BandeiraServico() {
         super();
     }
 
-    @Override
     public Bandeira getById(long pk) {
         return super.getById(pk);
     }

@@ -3,27 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import java.util.List;
 import javax.persistence.*;
 import modelo.Usuario;
-import persistencia.UsuarioDAO;
 
 
-/**
- *
- * @author Iury
- */
+public class UsuarioServico extends DAOGenericoJPA<Long, Usuario>{
 
-
-public class UsuarioDAOJPA extends DAOGenericoJPA<Long, Usuario> implements UsuarioDAO{
-
-    public UsuarioDAOJPA() {
+    public UsuarioServico() {
         super();
     }
     
-    @Override
     public String retornaSenha(String telefone){
         Query query = super.getEm().createNamedQuery("Usuario.RetornaSenha");
         
@@ -91,7 +83,6 @@ public class UsuarioDAOJPA extends DAOGenericoJPA<Long, Usuario> implements Usua
         super.getEm().getTransaction().commit();
     }
     
-    @Override
     public Usuario getById(long pk) {
         return super.getById(pk);
     }

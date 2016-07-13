@@ -3,26 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Pedido;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import persistencia.PedidoDAO;
 
-/**
- *
- * @author Iury
- */
-public class PedidoDAOJPA extends DAOGenericoJPA<Long, Pedido> implements PedidoDAO{
+public class PedidoServico extends DAOGenericoJPA<Long, Pedido>{
 
-    public PedidoDAOJPA() {
+    public PedidoServico() {
         super();
     }
     
-    @Override
     public Pedido getById(long pk) {
         return super.getById(pk);
     }

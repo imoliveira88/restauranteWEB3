@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
-import persistencia.jpa.BandeiraDAOJPA;
+import servico.BandeiraServico;
 
 @ManagedBean(name = "bandeiraMB")
 @SessionScoped
@@ -65,7 +65,7 @@ public class Bandeira implements Serializable, BaseEntity {
     }
     
     public List<Bandeira> getListaBandeiras(){
-        BandeiraDAOJPA bdao = new BandeiraDAOJPA();
+        BandeiraServico bdao = new BandeiraServico();
         return bdao.todasBandeiras();
     }
 

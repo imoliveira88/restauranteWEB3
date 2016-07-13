@@ -8,7 +8,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import persistencia.jpa.PedidoDAOJPA;
+import servico.PedidoServico;
 
 @ManagedBean(name = "pedido")
 @SessionScoped
@@ -94,15 +94,15 @@ public class Pedido implements Serializable {
     }
     
     public List<Pedido> getPedidosNAtendidos(){
-        return new PedidoDAOJPA().pedidosNAtendidos();
+        return new PedidoServico().pedidosNAtendidos();
     }
     
     public List<Pedido> getPedidosAtendidos(){
-        return new PedidoDAOJPA().pedidosAtendidos();
+        return new PedidoServico().pedidosAtendidos();
     }
     
     public String atendePedido(Long id){
-        PedidoDAOJPA pd = new PedidoDAOJPA();
+        PedidoServico pd = new PedidoServico();
         pd.pedidoAtende(id);
         return "/faces/funcionario/pedidos.xhtml";
     }

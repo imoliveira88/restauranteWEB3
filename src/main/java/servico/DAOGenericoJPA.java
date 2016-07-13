@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package persistencia.jpa;
+package servico;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 @SuppressWarnings("unchecked")
 public class DAOGenericoJPA<PK, T> {
-    
+    private static final String PERSISTENCE_UNIT_NAME = "restauranteUP";
+    private static EntityManagerFactory factory;
+    private static FabricaDAOJPA instance = null;   
     private final EntityManager em;
  
     public DAOGenericoJPA() {
-        this.em = FabricaDAOJPA.getInstance().getFactory().createEntityManager();
+        factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        this.em = factory.createEntityManager();
     }
     
     public EntityManager getEm(){
@@ -40,6 +45,7 @@ public class DAOGenericoJPA<PK, T> {
  
     public void delete(T entity) throws Exception{
         em.getTransaction().begin();
+        entity = em.merge(entity);
         em.remove(entity);
         em.getTransaction().commit();
     }
