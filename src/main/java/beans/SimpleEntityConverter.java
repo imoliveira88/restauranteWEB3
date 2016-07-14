@@ -26,8 +26,7 @@ import javax.faces.convert.FacesConverter;
     @Override
     public String getAsString(FacesContext ctx, UIComponent component, Object value) {
 
-        if (value != null
-                && !"".equals(value)) {
+        if (value != null && !"".equals(value)) {
 
             BaseEntity entity = (BaseEntity) value;
 

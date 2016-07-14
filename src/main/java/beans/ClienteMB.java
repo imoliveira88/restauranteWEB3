@@ -1,12 +1,11 @@
 package beans;
 
-import java.io.Serializable;
 import servico.ClienteServico;
 import java.text.ParseException;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import modelo.Bandeira;
 import modelo.Cartao;
@@ -15,7 +14,7 @@ import modelo.Endereco;
 import servico.BandeiraServico;
 
 @ManagedBean(name = "cadastroC")
-@RequestScoped
+@SessionScoped
 public class ClienteMB{
     private String bandeira;
     private String numeroCartao;
@@ -135,11 +134,12 @@ public class ClienteMB{
         
         try {
             Bandeira bandMan = bServico.retornaBandeira(bandeira);
-
+            
             Cartao cartao = new Cartao(bandMan, numeroCartao, validade);
+            
             Endereco endereco = new Endereco(tipologradouro, logradouro, numero, cep, cidade, estado);
             Cliente cliente = new Cliente(nome, senha, telefone, endereco, cartao);
-
+            
             if (cli.salvar(cliente)) {
                 this.adicionaMensagem("Cadastro feito com sucesso! Realize login!","destinoAviso");
                 return "/faces/login.xhtml";

@@ -21,18 +21,19 @@
 
              <h:form id="cadastro" class="formGeral">
                  <p:growl id="msgs" for="destinoAviso" autoUpdate="true" life="6000"/>
+                 <h:message for="bandeira" rendered="true"/>
 
                  <p:fieldset legend="Informações Básicas" style="margin-bottom:20px">
                      <h:panelGrid columns="2" id = "basico"  cellpadding="5">
 
-                         <h:outputText value="Nome: " />
-                         <h:inputText id="nome" value="#{cadastroC.nome}" size="37" />
+                         <p:outputLabel for="nome" value="Nome: " />
+                         <p:inputText id="nome" value="#{cadastroC.nome}" size="37" />
 
-                         <h:outputText value="Telefone (será seu login): " />
-                         <h:inputText id="login" value="#{cadastroC.telefone}" size="12" />
+                         <p:outputLabel for="login" value="Telefone (será seu login): " />
+                         <p:inputText id="login" value="#{cadastroC.telefone}" size="12" />
 
-                         <h:outputText value="Senha: " />
-                         <h:inputSecret id="senha" value="#{cadastroC.senha}" size="8" />
+                         <p:outputLabel for="senha" value="Senha: " />
+                         <p:password id="senha" value="#{cadastroC.senha}" size="8" />
 
                      </h:panelGrid>
                  </p:fieldset>
@@ -49,17 +50,17 @@
                              <f:selectItem itemLabel="TRAVESSA" itemValue="TRAVESSA" />
                          </p:selectOneMenu>
                          
-                         <h:outputText value="Logradouro: " />
-                         <h:inputText id="logradouro" value="#{cadastroC.logradouro}" size="37" />
+                         <p:outputLabel for="logradouro" value="Logradouro: " />
+                         <p:inputText id="logradouro" value="#{cadastroC.logradouro}" size="37" />
 
-                         <h:outputText value="Número: " />
-                         <h:inputText id="numero" value="#{cadastroC.numero}" size="5" />
+                         <p:outputLabel for="numero" value="Número: " />
+                         <p:inputText id="numero" value="#{cadastroC.numero}" size="5" />
 
-                         <h:outputText value="CEP: " />
-                         <h:inputText id="cep" value="#{cadastroC.cep}" size="10" />
+                         <p:outputLabel for="cep" value="CEP: " />
+                         <p:inputText id="cep" value="#{cadastroC.cep}" size="10" />
 
-                         <h:outputText value="Cidade: " />
-                         <h:inputText id="cidade" value="#{cadastroC.cidade}" size="20" />
+                         <p:outputLabel for="estado" value="Cidade: " />
+                         <p:inputText id="cidade" value="#{cadastroC.cidade}" size="20" />
 
                          <p:outputLabel for="estado" value="Estado: " />
                          <p:selectOneMenu id="estado" value="#{cadastroC.estado}">
@@ -99,9 +100,9 @@
                             <h:panelGrid columns="2" id = "cartao"  cellpadding="5">
 
                                 <p:outputLabel value="Bandeira: " for="bandeira" />
-                                <h:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px" converter="simpleConverter">
+                                <p:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px" converter="simpleConverter">
                                     <f:selectItems value="#{bandeiraMB.listaBandeiras}" var="band" itemValue="#{band}"/>
-                                </h:selectOneMenu>
+                                </p:selectOneMenu>
                                 <f:attribute name="escolha" value="#{band}" />
 
                                 <p:outputLabel value="Número do cartão" for="numeroCartao"/>
@@ -113,7 +114,7 @@
                             </h:panelGrid>
                         </p:fieldset>
 
-                 <h:commandButton class="botao" value="Salvar" action="#{cadastroC.cadastraCliente}"/>
+                 <h:commandButton id="btSalvar" class="botao" value="Salvar" action="#{cadastroC.cadastraCliente}" />
 
              </h:form>
          </ui:define>

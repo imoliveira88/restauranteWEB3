@@ -6,12 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import servico.PedidoServico;
 
-@ManagedBean(name = "pedido")
-@SessionScoped
 @Entity
 @NamedQueries(value = 
         {@NamedQuery(name = "Pedido.NaoAtendido", query= " SELECT u FROM Pedido u WHERE u.atendido = 'N'  ORDER BY u.data DESC"),

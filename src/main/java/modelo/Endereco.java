@@ -7,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
 
-@ManagedBean(name = "endereco")
-@SessionScoped
 @Entity
 @Table(name = "TB_ENDERECO")
 public class Endereco implements Serializable {
