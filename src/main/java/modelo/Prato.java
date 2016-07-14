@@ -3,16 +3,12 @@ package modelo;
 import beans.BaseEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean(name = "prato")
-@SessionScoped
 @Entity
 @NamedQuery(name = "Prato.RetornaId",query= " SELECT max(u.id) FROM Prato u WHERE u.nome = :nome")
 @Table(name = "TB_PRATO")

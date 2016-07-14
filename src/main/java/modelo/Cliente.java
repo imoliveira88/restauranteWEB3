@@ -2,12 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 
-@ManagedBean(name = "cliente")
-@SessionScoped
 @Entity
 @Table(name = "TB_CLIENTE")
 @PrimaryKeyJoinColumn(name = "ID_CLIENTE")
@@ -29,7 +25,7 @@ public class Cliente extends Usuario {
     @JoinColumn(name = "ID_CARTAO", referencedColumnName = "ID_CARTAO")
     private Cartao cartao;
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Pedido> pedidos;
 
     public List<Pedido> getPedidos() {

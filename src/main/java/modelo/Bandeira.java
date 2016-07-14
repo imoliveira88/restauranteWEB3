@@ -36,7 +36,7 @@ public class Bandeira implements Serializable, BaseEntity {
     @Column(name = "ID_BANDEIRA")
     private Long id;
     
-    @OneToMany(mappedBy = "bandeira", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "bandeira", fetch = FetchType.LAZY)
     private final List<Cartao> cartoes;
     
     @NotBlank
@@ -44,6 +44,7 @@ public class Bandeira implements Serializable, BaseEntity {
     @Column(name = "BANDEIRA_NOME")
     private String nome;
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -75,10 +76,17 @@ public class Bandeira implements Serializable, BaseEntity {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-  
-    public boolean equals(Bandeira band) {
-        return this.nome.equals(band.nome);
-    }   
+
+    public List<Cartao> getCartoes() {
+        return cartoes;
+    }
+    
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        return ((Bandeira) obj).getNome().equals(this.nome);
+    }
     
     @Override
     public String toString(){

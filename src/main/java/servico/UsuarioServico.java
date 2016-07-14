@@ -55,27 +55,30 @@ public class UsuarioServico extends DAOGenericoJPA<Long, Usuario>{
     }
     
     //Retorna a id caso usuário exista e zero, caso não exista
-    public long existeUsuario(Usuario usu){
+    public boolean existeUsuario(Usuario usu){
         String query = "select e from Usuario e";
         List<Usuario> usuarios = super.getEm().createQuery(query, Usuario.class).getResultList();
         try{
             for(Usuario usuario : usuarios){
-                if(usuario.equals(usu)) return usuario.getId();
+                if(usuario.equals(usu)){
+                    return true;
+                }
             }
-            return 0;
+            return false;
         }
         catch(NoResultException e){
-            return 0;
+            return false;
         }
     }
     
-    @Override
-    public void save(Usuario b) {
-        super.getEm().getTransaction().begin();
-        if(existeUsuario(b) != 0){
+    public boolean salvar(Usuario b) {
+        if(!existeUsuario(b)){
+            super.getEm().getTransaction().begin();
             super.getEm().persist(b);
+            super.getEm().getTransaction().commit();
+            return true;
         }
-        super.getEm().getTransaction().commit();
+        return false;
     }
     
     public Usuario getById(long pk) {

@@ -20,29 +20,6 @@ public class BandeiraServico extends DAOGenericoJPA<Long, Bandeira>{
         return super.getById(pk);
     }
     
-    public boolean existeBandeira(Bandeira band){
-        Bandeira resultado;
-        String consulta = "select b from Bandeira b where b.nome = :nome";
-        TypedQuery<Bandeira> query = super.getEm().createQuery(consulta, Bandeira.class);
-        query.setParameter("nome",band.getNome());
-        try{
-            resultado = query.getSingleResult();
-            return true;
-        }
-        catch(NoResultException e){
-            return false;
-        }
-    }
-    
-    @Override
-    public void save(Bandeira b){
-        super.getEm().getTransaction().begin();
-        if(!existeBandeira(b)){
-            super.getEm().persist(b);
-        }
-        super.getEm().getTransaction().commit();
-    }
-    
     public Bandeira retornaBandeira(String bandeira){
         TypedQuery<Bandeira> query = super.getEm().createNamedQuery("Bandeira.BANDEIRA_POR_NOME", Bandeira.class);
         

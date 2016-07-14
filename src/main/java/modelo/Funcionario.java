@@ -6,8 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
 
-@ManagedBean(name = "funcionario")
-@SessionScoped
 @Entity
 @Table(name = " TB_FUNCIONARIO")
 @PrimaryKeyJoinColumn(name = "ID_FUNCIONARIO")
