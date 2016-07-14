@@ -14,7 +14,7 @@
             <!-- Contents to be decorated -->
             
                 <h:form id="login" class="formGeral">
-                    <p:growl id="msgs" showDetail="true" />
+                    <p:growl id="msgs" showDetail="true" for="destinoAviso"/>
                     <p:fieldset class="field" legend="Login" >
                         <p:growl id="growl" showDetail="false" life="2000" />
                         <h:panelGrid columns="2" cellpadding="5">
@@ -30,8 +30,6 @@
 
                             <f:facet name="footer">
                                 <a href='faces/cadastro_cliente.xhtml'>#{msgs.notCadastro}</a>
-                                <br/>
-                                <h:outputText value="#{cadastroC.mensagem}"/>
                                 <br/>
                                 <h:outputText value="#{usuario.mensagem}"/>
                             </f:facet>
