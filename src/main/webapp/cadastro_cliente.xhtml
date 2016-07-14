@@ -7,22 +7,18 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>IGNORED</title>
+        <title>#{msgs.titleCadastro}</title>
     </h:head>
     <h:body>
 
-        <ui:composition template="/templates/masterLayout.xhtml">
+        <ui:decorate template="/templates/masterDecorator.xhtml">
+ 
+         <h2>Cadastro de cliente</h2>
 
-            <ui:define name="windowTitle">
-                Cadastro de Clientes
-            </ui:define> 
-         <ui:define name="content">
-             <h2>Cadastro de cliente</h2>
+             <h:form id="login" class="formGeral">
+                 <p:growl id="msgs" showDetail="true" />
 
-             <h:form id="cadastro" class="formGeral">
-                 <p:growl id="msgs" showDetail="true" autoUpdate="true" life="6000"/>
-
-                 <p:fieldset legend="Informações Básicas" style="margin-bottom:20px">
+                 <p:fieldset class="field" legend="Informações Básicas">
                      <h:panelGrid columns="2" id = "basico"  cellpadding="5">
 
                          <h:outputText value="Nome: " />
@@ -37,11 +33,11 @@
                      </h:panelGrid>
                  </p:fieldset>
 
-                 <p:fieldset legend="Endereço" style="margin-bottom:20px">
+                 <p:fieldset class="field" legend="Endereço">
                      <h:panelGrid columns="2" id = "endereco"  cellpadding="5">
 
-                         <p:outputLabel for="tipoLogradouro" value="Tipo Logradouro: " />
-                         <p:selectOneMenu id="tipoLogradouro" value="#{cadastroC.tipologradouro}">
+                         <p:outputLabel for="tipo" value="Tipo Logradouro: " />
+                         <p:selectOneMenu id="tipo" value="#{cadastroC.tipologradouro}">
                              <f:selectItem itemLabel="RUA" itemValue="RUA" />
                              <f:selectItem itemLabel="AVENIDA" itemValue="AVENIDA" />
                              <f:selectItem itemLabel="CONJUNTO" itemValue="CONJUNTO" />
@@ -95,11 +91,11 @@
                      </h:panelGrid>
                  </p:fieldset>
 
-                 <p:fieldset legend="Informações do Cartão" style="margin-bottom:20px">
+                 <p:fieldset class="field" legend="Informações do Cartão">
                             <h:panelGrid columns="2" id = "cartao"  cellpadding="5">
 
                                 <p:outputLabel value="Bandeira: " for="bandeira" />
-                                <h:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px" converter="simpleConverter">
+                                <h:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px" requiredMessage="Valor é obrigatório" converter="simpleConverter">
                                     <f:selectItems value="#{bandeiraMB.listaBandeiras}" var="band" itemValue="#{band}"/>
                                 </h:selectOneMenu>
                                 <f:attribute name="escolha" value="#{band}" />
@@ -109,16 +105,21 @@
 
                                 <p:outputLabel value="Validade" for="data"/>
                                 <p:calendar id="data" value="#{cadastroC.validade}" />
-
+                                
+                                <br/>
+                                <h:commandButton class="botao" value="Enviar" action="#{cadastroC.cadastraCliente}"/>
                             </h:panelGrid>
-                        </p:fieldset>
+                     
+                  </p:fieldset>
 
-                 <h:commandButton class="botao" value="Enviar" action="#{cadastroC.cadastraCliente}"/>
+                 
 
              </h:form>
-         </ui:define>
-      </ui:composition>
-               
+         
+      </ui:decorate>
+        
+          
+        
    </h:body>
 </html>
 

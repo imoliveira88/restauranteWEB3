@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>IGNORED</title>        
+    </h:head>
+
+    <h:body>
+        <ui:composition>
+            <h:outputStylesheet library="css" name="style.css"/>
+            <div id="heading">
+                <ui:insert name="heading">
+                    <ui:include src="/sections/login/header.xhtml"/>
+                </ui:insert>
+            </div>
+            <div id="sidebarLeft">
+                <ui:insert name="sidebarLeft">
+                    <ui:include src="/sections/login/sidebarLeft.xhtml"/>
+                </ui:insert>
+            </div>
+            <div id="content">
+            <table id="menu">
+            <tr>
+                <td onclick="location.href='login.xhtml'">#{msgs.menuOne}</td>
+                <td onclick="location.href='home.xhtml'">#{msgs.menuTwo}</td>
+                <td onclick="location.href='cardapio.xhtml'">#{msgs.menuThree}</td>
+                <td onclick="location.href='contato.xhtml'">#{msgs.menuFour}</td>
+            </tr>
+            </table>
+                <ui:insert/>
+            </div>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,214 @@
+*  {
+    margin:0;
+    padding:0;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+body{
+   display: table;
+   margin: 0px;
+   width:100%;
+   background:black;
+   font-family: sans-serif;
+   font-size: 16px; 
+    
+}
+
+#heading {
+   width:100%;
+}
+    
+header#cabecalho{
+   background-image: url("#{resource['images/OxenteBg.png']}");
+   background-repeat: repeat-x;
+   background-size: contain;
+}
+
+#sidebarLeft {
+   border: black;
+   padding: 5px;
+   width: 200px;
+   height: 1000px;
+   background-image: url("#{resource['images/sisal.jpg']}");
+   background-repeat: repeat-y;
+   background-size: contain;
+   float: left;
+}
+
+#box{
+   padding: 5px;
+   width: 95%;
+   height: 800px;
+   background-color: #FFC;
+   margin: 0px auto;
+}
+
+.anime {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: -20px;
+  animation-duration: 3s;
+  animation-name: slidein;
+  color: yellow;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 100%
+  }to{
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.field{
+   background-image: url("#{resource['images/beansBg.jpg']}");
+   background-repeat: repeat-y;
+   background-size: 60%;
+   background-position: right;
+   padding: 0.6em 1em;
+   margin: 20px 0px;
+   
+}
+
+h2{
+    color: yellow;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: -20px;
+}
+
+.welcomeText{
+    padding: 5px;
+    text-align: center;
+}
+
+.anuncio{
+    width: 180px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+#content {
+   margin-left: 200px;
+   padding: 15px;
+}
+
+.logo{
+    display: block;
+    height: 30%;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#itens tr:nth-child(odd){
+    background-color: gainsboro;
+    font-weight: bold;
+    font-size: large;
+}
+
+#itens tr:nth-child(even){
+    background-color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+#listas{
+    border: #000000 1px solid;
+}
+
+#listas tr:nth-child(odd){
+    background-color: gainsboro;
+    font-size: large;
+}
+
+#listas tr:nth-child(even){
+    background-color: white;
+    font-size: large;
+}
+
+#listas thead{
+    background-color: burlywood;
+    font-weight: bold;
+}
+
+table#listas td:hover{
+	font-weight: bold;
+	cursor: pointer;       
+}
+
+table#menu{
+        border: 1px solid #656565;
+        border-radius: 10px;
+        box-shadow: 10px 10px 5px #888888;
+	width: 95%;
+	background-color: #000000;
+	text-align: center;
+        color: #ffffff;
+	height: 50px;
+        border: orange 1px solid;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+table#menu td{
+	width: 15%;
+        border-radius: 10px;        
+}
+table#corpo{
+        align-self: center;
+	width: 70%;
+        background-color: white;
+	text-align: justify;
+        appearance: desktop;
+}
+
+table#menu td:hover{
+	background-color: #ffffff;
+	font-weight: bold;
+	cursor: pointer;
+        color: #000000;        
+}
+
+.formGeral{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 95%;
+}
+
+.destaque {
+    font-weight: bold;
+    color: yellowgreen;
+}
+
+.chamativo {
+    font-weight: bold;
+    font-style: italic;
+    color: green;
+}
+
+.explicativo {
+    background-color: lawngreen;
+    width: 40%;
+}
+
+.botao{
+    height: auto;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: #f0b7a1; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f0b7a1 0%, #8c3310 50%, #752201 51%, #bf6e4e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0b7a1), color-stop(50%,#8c3310), color-stop(51%,#752201), color-stop(100%,#bf6e4e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* IE10+ */
+    background: linear-gradient(bottom,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 ); /* IE6-9 */
+    cursor:pointer;
+}
