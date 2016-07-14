@@ -7,14 +7,14 @@ package servico;
 
 import modelo.Cliente;
 
-public class ClienteDAOJPA extends DAOGenericoJPA<Long,Cliente>{
+public class ClienteServico extends UsuarioServico{
 
-    public ClienteDAOJPA() {
+    public ClienteServico() {
         super();
     }
     
     public Cliente getById(long pk) {
-        return super.getById(pk);
+        return (Cliente) super.getById(pk);
     }
     
 }

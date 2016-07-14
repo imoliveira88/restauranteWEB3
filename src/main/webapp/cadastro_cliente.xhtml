@@ -20,7 +20,7 @@
              <h2>Cadastro de cliente</h2>
 
              <h:form id="cadastro" class="formGeral">
-                 <p:growl id="msgs" showDetail="true" autoUpdate="true" life="6000"/>
+                 <p:growl id="msgs" for="destinoAviso" autoUpdate="true" life="6000"/>
 
                  <p:fieldset legend="Informações Básicas" style="margin-bottom:20px">
                      <h:panelGrid columns="2" id = "basico"  cellpadding="5">
@@ -113,7 +113,7 @@
                             </h:panelGrid>
                         </p:fieldset>
 
-                 <h:commandButton class="botao" value="Enviar" action="#{cadastroC.cadastraCliente}"/>
+                 <h:commandButton class="botao" value="Salvar" action="#{cadastroC.cadastraCliente}"/>
 
              </h:form>
          </ui:define>

@@ -69,13 +69,15 @@ public class UsuarioServico extends DAOGenericoJPA<Long, Usuario>{
         }
     }
     
-    @Override
-    public void save(Usuario b) {
+    public boolean salvar(Usuario b) {
         super.getEm().getTransaction().begin();
         if(existeUsuario(b) != 0){
             super.getEm().persist(b);
+            super.getEm().getTransaction().commit();
+            return true;
         }
         super.getEm().getTransaction().commit();
+        return false;
     }
     
     public Usuario getById(long pk) {
