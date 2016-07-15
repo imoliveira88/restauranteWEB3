@@ -6,21 +6,24 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>#{msgs.titleLogin}</title>        
+        <title>#{msgs.titleLogin}</title> 
+        <h:outputStylesheet library="css" name="style.css"/>
     </h:head>
     <h:body>
+
         <ui:decorate template="/templates/masterDecorator.xhtml">
             
             <!-- Contents to be decorated -->
             
                 <h:form id="login" class="formGeral">
-                    <p:growl id="msgs" showDetail="true" for="destinoAviso"/>
                     <p:fieldset class="field" legend="Login" >
-                        <p:growl id="growl" showDetail="false" life="2000" />
+                        <p:growl id="growl" for="destinoAviso" showDetail="true" life="2000" autoUpdate="true"/>
+
+
                         <h:panelGrid columns="2" cellpadding="5">
 
                             <h:outputText value="#{msgs.labelLogin}"/>
-                            <h:inputText value="#{usuario.telefone}" size="20" />
+                            <h:inputText id="telefone" value="#{usuario.telefone}" size="20" required="true"/>
 
                             <h:outputText value="#{msgs.labelPassword}"/>
                             <h:inputSecret id="senha" value="#{usuario.senha}" size="20" required="true" />
@@ -31,7 +34,7 @@
                             <f:facet name="footer">
                                 <a href='faces/cadastro_cliente.xhtml'>#{msgs.notCadastro}</a>
                                 <br/>
-                                <h:outputText value="#{usuario.mensagem}"/>
+                                
                             </f:facet>
                         </h:panelGrid>
                     </p:fieldset>

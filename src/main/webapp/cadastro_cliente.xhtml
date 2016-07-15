@@ -13,108 +13,110 @@
 
         <ui:decorate template="/templates/masterDecorator.xhtml">
  
-         <h2>Cadastro de cliente</h2>
+         <h2>#{msgs.titleCadastro}</h2>
 
-         <h:form id="cadastro" class="formGeral">
-             <p:growl id="msgs" showDetail="true" for="destinoAviso" autoUpdate="true" life="6000"/>
-             <h:message for="bandeira" rendered="true"/>
+             <h:form id="cadastro" class="formGeral">
+                 <p:growl id="msgs" for="destinoAviso" showDetail="true" autoUpdate="true" life="6000"/>
+                 <h:message for="bandeira" rendered="true"/>
 
-             <p:fieldset legend="Informações Básicas" style="margin-bottom:20px">
-                 <h:panelGrid columns="2" id = "basico"  cellpadding="5">
+                 <p:fieldset class="field" legend="#{msgs.cdtLabelField1}">
+                     <h:panelGrid columns="2" id = "basico"  cellpadding="5">
 
-                     <p:outputLabel for="nome" value="Nome: " />
-                     <p:inputText id="nome" value="#{cadastroC.nome}" size="37" />
+                         <p:outputLabel for="nome" value="#{msgs.cdtLabelNome}" />
+                         <p:inputText id="nome" value="#{cadastroC.nome}" size="37" />
 
-                     <p:outputLabel for="login" value="Telefone (será seu login): " />
-                     <p:inputText id="login" value="#{cadastroC.telefone}" size="12" />
+                         <p:outputLabel for="login" value="#{msgs.cdtLabelFone}" />
+                         <p:inputText id="login" value="#{cadastroC.telefone}" size="12" />
 
-                     <p:outputLabel for="senha" value="Senha: " />
-                     <p:password id="senha" value="#{cadastroC.senha}" size="8" />
+                         <p:outputLabel for="senha" value="#{msgs.cdtLabelSenha}" />
+                         <p:password id="senha" value="#{cadastroC.senha}" size="8" />
 
-                 </h:panelGrid>
-             </p:fieldset>
+                     </h:panelGrid>
+                 </p:fieldset>
 
-             <p:fieldset legend="Endereço" style="margin-bottom:20px">
-                 <h:panelGrid columns="2" id = "endereco"  cellpadding="5">
+                 <p:fieldset class="field" legend="#{msgs.cdtLabelEndereço}">
+                     <h:panelGrid columns="2" id = "endereco"  cellpadding="5">
 
-                     <p:outputLabel for="tipoLogradouro" value="Tipo Logradouro: " />
-                     <p:selectOneMenu id="tipoLogradouro" value="#{cadastroC.tipologradouro}">
-                         <f:selectItem itemLabel="RUA" itemValue="RUA" />
-                         <f:selectItem itemLabel="AVENIDA" itemValue="AVENIDA" />
-                         <f:selectItem itemLabel="CONJUNTO" itemValue="CONJUNTO" />
-                         <f:selectItem itemLabel="BECO" itemValue="BECO" />
-                         <f:selectItem itemLabel="TRAVESSA" itemValue="TRAVESSA" />
-                     </p:selectOneMenu>
+                         <p:outputLabel for="tipoLogradouro" value="#{msgs.cdtLabelTipoLogradouro}" />
+                         <p:selectOneMenu id="tipoLogradouro" value="#{cadastroC.tipologradouro}">
+                             <f:selectItem itemLabel="#{msgs.cdtLabelRua}" itemValue="#{msgs.cdtLabelRua}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelAv}" itemValue="#{msgs.cdtLabelAv}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelConj}" itemValue="#{msgs.cdtLabelConj}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelBeco}" itemValue="#{msgs.cdtLabelBeco}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelTrav}" itemValue="#{msgs.cdtLabelTrav}" />
+                         </p:selectOneMenu>
+                         
+                         <p:outputLabel for="logradouro" value="#{msgs.cdtLabelLogradouro}" />
+                         <p:inputText id="logradouro" value="#{cadastroC.logradouro}" size="37" />
 
-                     <p:outputLabel for="logradouro" value="Logradouro: " />
-                     <p:inputText id="logradouro" value="#{cadastroC.logradouro}" size="37" />
+                         <p:outputLabel for="numero" value="#{msgs.cdtLabelNumero}" />
+                         <p:inputText id="numero" value="#{cadastroC.numero}" size="5" />
 
-                     <p:outputLabel for="numero" value="Número: " />
-                     <p:inputText id="numero" value="#{cadastroC.numero}" size="5" />
+                         <p:outputLabel for="cep" value="#{msgs.cdtLabelCep}" />
+                         <p:inputText id="cep" value="#{cadastroC.cep}" size="10" />
 
-                     <p:outputLabel for="cep" value="CEP: " />
-                     <p:inputText id="cep" value="#{cadastroC.cep}" size="10" />
+                         <p:outputLabel for="estado" value="#{msgs.cdtLabelCidade}" />
+                         <p:inputText id="cidade" value="#{cadastroC.cidade}" size="20" />
 
-                     <p:outputLabel for="estado" value="Cidade: " />
-                     <p:inputText id="cidade" value="#{cadastroC.cidade}" size="20" />
+                         <p:outputLabel for="estado" value="#{msgs.cdtLabelEstado}" />
+                         <p:selectOneMenu id="estado" value="#{cadastroC.estado}">
+                             <f:selectItem itemLabel="AC" itemValue="AC" />
+                             <f:selectItem itemLabel="AL" itemValue="AL" />
+                             <f:selectItem itemLabel="AM" itemValue="AM" />
+                             <f:selectItem itemLabel="AP" itemValue="AP" />
+                             <f:selectItem itemLabel="BA" itemValue="BA" />
+                             <f:selectItem itemLabel="CE" itemValue="CE" />
+                             <f:selectItem itemLabel="DF" itemValue="DF" />
+                             <f:selectItem itemLabel="ES" itemValue="ES" />
+                             <f:selectItem itemLabel="GO" itemValue="GO" />
+                             <f:selectItem itemLabel="MA" itemValue="MA" />
+                             <f:selectItem itemLabel="MG" itemValue="MG" />
+                             <f:selectItem itemLabel="MT" itemValue="MT" />
+                             <f:selectItem itemLabel="MS" itemValue="MS" />
+                             <f:selectItem itemLabel="PA" itemValue="PA" />
+                             <f:selectItem itemLabel="PB" itemValue="PB" />
+                             <f:selectItem itemLabel="PE" itemValue="PE" />
+                             <f:selectItem itemLabel="PI" itemValue="PI" />
+                             <f:selectItem itemLabel="PR" itemValue="PR" />
+                             <f:selectItem itemLabel="RJ" itemValue="RJ" />
+                             <f:selectItem itemLabel="RN" itemValue="RN" />
+                             <f:selectItem itemLabel="RO" itemValue="RO" />
+                             <f:selectItem itemLabel="RR" itemValue="RR" />
+                             <f:selectItem itemLabel="RS" itemValue="RS" />
+                             <f:selectItem itemLabel="SC" itemValue="SC" />
+                             <f:selectItem itemLabel="SE" itemValue="SE" />
+                             <f:selectItem itemLabel="SP" itemValue="SP" />
+                             <f:selectItem itemLabel="TO" itemValue="TO" />
+                         </p:selectOneMenu>
 
-                     <p:outputLabel for="estado" value="Estado: " />
-                     <p:selectOneMenu id="estado" value="#{cadastroC.estado}">
-                         <f:selectItem itemLabel="AC" itemValue="AC" />
-                         <f:selectItem itemLabel="AL" itemValue="AL" />
-                         <f:selectItem itemLabel="AM" itemValue="AM" />
-                         <f:selectItem itemLabel="AP" itemValue="AP" />
-                         <f:selectItem itemLabel="BA" itemValue="BA" />
-                         <f:selectItem itemLabel="CE" itemValue="CE" />
-                         <f:selectItem itemLabel="DF" itemValue="DF" />
-                         <f:selectItem itemLabel="ES" itemValue="ES" />
-                         <f:selectItem itemLabel="GO" itemValue="GO" />
-                         <f:selectItem itemLabel="MA" itemValue="MA" />
-                         <f:selectItem itemLabel="MG" itemValue="MG" />
-                         <f:selectItem itemLabel="MT" itemValue="MT" />
-                         <f:selectItem itemLabel="MS" itemValue="MS" />
-                         <f:selectItem itemLabel="PA" itemValue="PA" />
-                         <f:selectItem itemLabel="PB" itemValue="PB" />
-                         <f:selectItem itemLabel="PE" itemValue="PE" />
-                         <f:selectItem itemLabel="PI" itemValue="PI" />
-                         <f:selectItem itemLabel="PR" itemValue="PR" />
-                         <f:selectItem itemLabel="RJ" itemValue="RJ" />
-                         <f:selectItem itemLabel="RN" itemValue="RN" />
-                         <f:selectItem itemLabel="RO" itemValue="RO" />
-                         <f:selectItem itemLabel="RR" itemValue="RR" />
-                         <f:selectItem itemLabel="RS" itemValue="RS" />
-                         <f:selectItem itemLabel="SC" itemValue="SC" />
-                         <f:selectItem itemLabel="SE" itemValue="SE" />
-                         <f:selectItem itemLabel="SP" itemValue="SP" />
-                         <f:selectItem itemLabel="TO" itemValue="TO" />
-                     </p:selectOneMenu>
+                     </h:panelGrid>
+                 </p:fieldset>
 
-                 </h:panelGrid>
-             </p:fieldset>
+                 <p:fieldset class="field" legend="#{msgs.cdtLabelInfo}">
+                            <h:panelGrid columns="2" id = "cartao"  cellpadding="5">
 
-             <p:fieldset legend="Informações do Cartão" style="margin-bottom:20px">
-                 <h:panelGrid columns="2" id = "cartao"  cellpadding="5">
+                                <p:outputLabel value="#{msgs.cdtLabelBand}" for="bandeira" />
+                                <p:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px">
+                                    <f:selectItem itemLabel="DINERS" itemValue="DINERS" />
+                                    <f:selectItem itemLabel="ELO" itemValue="ELO" />
+                                    <f:selectItem itemLabel="MASTERCARD" itemValue="MASTERCARD" />
+                                    <f:selectItem itemLabel="VISA" itemValue="VISA" />
+                                </p:selectOneMenu>
 
-                     <p:outputLabel value="Bandeira: " for="bandeira" />
-                     <p:selectOneMenu id="bandeira" value="#{cadastroC.bandeira}" style="width:150px">
-                         <f:selectItem itemLabel="DINERS" itemValue="DINERS" />
-                         <f:selectItem itemLabel="ELO" itemValue="ELO" />
-                         <f:selectItem itemLabel="MASTERCARD" itemValue="MASTERCARD" />
-                         <f:selectItem itemLabel="VISA" itemValue="VISA" />
-                     </p:selectOneMenu>
+                                <p:outputLabel value="#{msgs.cdtLabelNumCartao}" for="numeroCartao"/>
+                                <p:inputText id="numeroCartao" value="#{cadastroC.numeroCartao}" size="16" />
 
-                     <p:outputLabel value="Número do cartão" for="numeroCartao"/>
-                     <p:inputText id="numeroCartao" value="#{cadastroC.numeroCartao}" size="16" />
+                                <p:outputLabel value="#{msgs.cdtLabelVal}" for="data"/>
+                                <p:calendar id="data" value="#{cadastroC.validade}" />
+                                
+                                <br/>
+                                <h:commandButton id="btSalvar" class="botao" value="#{msgs.cdtBtnSalvar}" action="#{cadastroC.cadastraCliente}" />
+                            </h:panelGrid>
+                        </p:fieldset>
 
-                     <p:outputLabel value="Validade" for="data"/>
-                     <p:calendar id="data" value="#{cadastroC.validade}" />
+                 
 
-                 </h:panelGrid>
-             </p:fieldset>
-
-             <h:commandButton id="btSalvar" class="botao" value="Salvar" action="#{cadastroC.cadastraCliente}" />
-
-         </h:form>
+             </h:form>
          
       </ui:decorate>
         

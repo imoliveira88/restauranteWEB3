@@ -1,18 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-   <head><title>IGNORED</title></head>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+   <head><title>#{msgs.titleOxente}</title></head>
    <body>
       <ui:composition>
-         <table id="menu" align='center'>
-            <tr>
-                <td onclick="location.href='login.xhtml'">Login</td>
-                <td onclick="location.href='home.xhtml'">Apresentação</td>
-                <td onclick="location.href='cardapio.xhtml'">Cardápio</td>
-                <td onclick="location.href='contato.xhtml'">Contato</td>
-            </tr>
-        </table>
+         <header id="cabecalho">
+               <h:graphicImage class="logo" library="images" name="OxenteLogo.png"/>               
+         </header>
+          
       </ui:composition>
    </body>
 </html>
