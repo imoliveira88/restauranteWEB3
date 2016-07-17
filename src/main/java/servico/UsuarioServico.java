@@ -11,46 +11,18 @@ public class UsuarioServico extends DAOGenericoJPA<Long, Usuario>{
         super();
     }
     
-    public String retornaSenha(String telefone){
-        Query query = super.getEm().createNamedQuery("Usuario.RetornaSenha");
+    public Usuario retornaUsuario(String telefone){
+        Query query = super.getEm().createNamedQuery("Usuario.RetornaUsuario");
         
         query.setParameter("tel", telefone);
+        Usuario usu;
         
         try{
-            return (String) query.getSingleResult();
+            usu = (Usuario) query.getSingleResult();
+            return usu;
         }
         catch(NoResultException e){
-            return "";
-        }
-    }
-    
-    public long retornaId(String telefone){
-        Query query = super.getEm().createNamedQuery("Usuario.RetornaId");
-        
-        query.setParameter("tel", telefone);
-        
-        try{
-            return (long) query.getSingleResult();
-        }
-        catch(NoResultException e){
-            return 0;
-        }
-    }
-    
-    public String tipoUsuario(Usuario usu)throws NoResultException{
-        Query query = super.getEm().createNamedQuery("Usuario.loginCliente");
-        
-        query.setParameter("telefone", usu.getTelefone());
-        
-        Object tipoC;
-        
-        try{
-            tipoC = query.getSingleResult();
-            if(tipoC == null) return "F";
-            else return "C";
-        }
-        catch(NoResultException e){
-            return "F";
+            return null;
         }
     }
     

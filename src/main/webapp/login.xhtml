@@ -23,13 +23,13 @@
                         <h:panelGrid columns="2" cellpadding="5">
 
                             <h:outputText value="#{msgs.labelLogin}"/>
-                            <h:inputText id="telefone" value="#{usuario.telefone}" size="20" required="true"/>
+                            <h:inputText id="telefone" value="#{loginBean.telefone}" size="20" required="true"/>
 
                             <h:outputText value="#{msgs.labelPassword}"/>
-                            <h:inputSecret id="senha" value="#{usuario.senha}" size="20" required="true" />
+                            <h:inputSecret id="senha" value="#{loginBean.senha}" size="20" required="true" />
                             
                             <br/>
-                            <h:commandButton value="#{msgs.btnLogin}" action="#{usuario.doLogin()}" class="botao"/>
+                            <h:commandButton value="#{msgs.btnLogin}" action="#{loginBean.doLogin()}" class="botao"/>
 
                             <f:facet name="footer">
                                 <a href='faces/cadastro_cliente.xhtml'>#{msgs.notCadastro}</a>

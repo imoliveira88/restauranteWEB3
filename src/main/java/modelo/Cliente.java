@@ -44,4 +44,8 @@ public class Cliente extends Usuario {
         this.cartao = cartao;
     }
     
+    public char tipo(){
+        return 'C';
+    }
+    
 }

@@ -44,4 +44,8 @@ public class Funcionario extends Usuario {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+    
+    public char tipo(){
+        return 'F';
+    }
 }

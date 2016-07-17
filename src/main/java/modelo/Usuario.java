@@ -4,25 +4,17 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
-import javax.faces.FacesException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
-import servico.UsuarioServico;
 
 @Entity
 @NamedQueries(value = 
-        {@NamedQuery(name = "Usuario.RetornaSenha", query= " SELECT u.senha FROM Usuario u WHERE u.telefone = :tel"),
-         @NamedQuery(name = "Usuario.RetornaId", query= " SELECT u.id FROM Usuario u WHERE u.telefone = :tel"),
-         @NamedQuery(name = "Usuario.loginCliente", query = "SELECT max(e.id) FROM Cliente e WHERE e.telefone = :telefone")})
+        {@NamedQuery(name = "Usuario.RetornaUsuario", query= " SELECT u FROM Usuario u WHERE u.telefone = :tel")})
 @Table(name = "TB_USUARIO")
-@ManagedBean(name = "usuario")
-@SessionScoped
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DISC_USUARIO", discriminatorType = DiscriminatorType.STRING, length = 1)
-public class Usuario implements Serializable {
+public abstract class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     
     public Usuario(String nome, String senha, String tel, Endereco end){
@@ -58,17 +50,6 @@ public class Usuario implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "ID_ENDERECO")
     private Endereco endereco;
-    
-    @Transient
-    String mensagem;
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
     
     public String getHorario() {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
@@ -115,38 +96,6 @@ public class Usuario implements Serializable {
         this.id = id;
     }
     
-    //Compara se o telefone digitado corresponde a um usuário válido, e, correspondendo,
-    //compara a senha fornecida, com a senha que há no banco
-    public boolean validaUsuario(){
-        UsuarioServico ud = new UsuarioServico();
-        return this.senha.equals(ud.retornaSenha(this.telefone));
-    }
-    
-    public String doLogin() throws FacesException,ExceptionInInitializerError{
-        boolean valido = false;
-        String tipo;
-        
-        valido = this.validaUsuario();
-       
-        if (!valido) {
-            setMensagem("Login ou senha incorretos!");
-            return "/faces/login.xhtml?faces-redirect=true";
-        } else {
-            UsuarioServico ud = new UsuarioServico();
-            this.setId(ud.retornaId(this.telefone));
-            
-            tipo = ud.tipoUsuario(this);
-            this.setNome(ud.getById(this.getId()).nome);
-            setMensagem("");
-            if (tipo.equals("C")) {
-                return "/faces/cliente/homeC.xhtml?faces-redirect=true";
-            } else {
-                return "/faces/funcionario/homeF.xhtml?faces-redirect=true";
-            }
-        }
-   
-      }
-    
     @Override
     public String toString(){
         String s = "";
@@ -167,6 +116,6 @@ public class Usuario implements Serializable {
         return this.telefone.equals(usu.telefone);
     }
     
-    
+    public abstract char tipo();
     
 }
