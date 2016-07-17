@@ -4,6 +4,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import modelo.Prato;
 import org.primefaces.event.FileUploadEvent;
 import servico.PratoServico;
@@ -14,7 +16,6 @@ public class PratoMB{
 
     private Prato prato;
     private List<Prato> pratos;
-    private String mensagem;
 
     public PratoMB() {
         this.prato = new Prato();
@@ -24,14 +25,6 @@ public class PratoMB{
 
     public List<Prato> getPratos() {
         return this.pratos;
-    }
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
     }
 
     public void setPratos(List<Prato> listarPratos) {
@@ -57,11 +50,11 @@ public class PratoMB{
             pra.save(prato);
             this.pratos.add(prato);
             this.prato = new Prato();
-            this.setMensagem("Prato adicionado com sucesso!");
+            adicionaMensagem("Prato adicionado com sucesso!","destinoAviso");
             return "/faces/funcionario/cadastro_prato.xhtml";
         }
         else{
-            this.setMensagem("Prato não adicionado! Este nome de prato já existe!");
+            adicionaMensagem("Prato não adicionado! O prato já existe!","destinoAviso");
             return "/faces/funcionario/cadastro_prato.xhtml";
         }
     }
@@ -70,7 +63,14 @@ public class PratoMB{
         PratoServico pra = new PratoServico();
         pra.delete(prato);
         this.pratos.remove(prato);
-        this.setMensagem("Prato removido com sucesso!");
+        adicionaMensagem("Prato removido com sucesso!","destinoAviso");
         return "/faces/funcionario/cadastro_prato.xhtml";
+    }
+    
+    private void adicionaMensagem(String mensagem, String destino){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage msg;
+        msg = new FacesMessage(FacesMessage.FACES_MESSAGES,mensagem);
+        context.addMessage(destino, msg);
     }
 }

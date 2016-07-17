@@ -108,11 +108,6 @@ public class Prato implements Serializable, BaseEntity {
     }
 
     public boolean equals(Prato outro) {
-        if (outro == null) {
-            System.out.println("NULO ");
-            return false;   
-        }
-        System.out.println("Nome 1: " + this.nome + "    Nome 2: " + outro.nome);
         return this.nome.equals(outro.nome); 
     }
     

@@ -20,7 +20,7 @@
                 <tr>
                     <td>
                         <h:form enctype="multipart/form-data">
-                            <p:growl id="msgs" showDetail="true" />
+                            <p:growl id="msgs" showDetail="true" autoUpdate="true" for="destinoAviso"/>
                             <p:fieldset legend="Inserir pratos" style="margin-bottom:20px">
                                 <h:panelGrid columns="2">
                                     Nome: <h:inputText value="#{pratoMB.prato.nome}"/>

@@ -12,7 +12,7 @@ public class ImagesView {
      
     @PostConstruct
     public void init() {
-        images = new ArrayList<String>();
+        images = new ArrayList<>();
         images.add("Arrumadinho.png");
         images.add("Baião de dois.png");
         images.add("Bobó de camarão.png");
