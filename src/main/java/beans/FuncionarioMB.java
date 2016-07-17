@@ -2,8 +2,10 @@ package beans;
 
 import servico.FuncionarioServico;
 import java.text.ParseException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import modelo.Endereco;
 import modelo.Funcionario;
 
@@ -19,7 +21,6 @@ public class FuncionarioMB{
     private String nome;
     private String telefone;
     private String senha;
-    private String mensagem;
     private String cargo;
     private Double salario;
     
@@ -29,16 +30,6 @@ public class FuncionarioMB{
      */
     public FuncionarioMB() {
     }
-
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
 
     public String getCep() {
         return cep;
@@ -136,8 +127,15 @@ public class FuncionarioMB{
 
         funcionario.save(func);
         
-        this.setMensagem("Cadastro feito com sucesso!");
+        adicionaMensagem("Cadastro feito com sucesso!","destinoAviso");
         
         return "/funcionario/cadastro_funcionario.xhtml?faces-redirect=true";
+    }
+    
+    private void adicionaMensagem(String mensagem, String destino){
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage msg;
+        msg = new FacesMessage(FacesMessage.FACES_MESSAGES,mensagem);
+        context.addMessage(destino, msg);
     }
 }
