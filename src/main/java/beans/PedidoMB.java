@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import modelo.Cliente;
 import modelo.ItemPedido;
 import modelo.Pedido;
 import modelo.Prato;
@@ -84,7 +83,7 @@ public class PedidoMB{
         
         
         setMensagem("Item adicionado ao pedido!");
-        return "/faces/cliente/pedido.xhtml";
+        return "homeC";
     }
     
     public String fechaPedido(long id_cliente){
@@ -95,7 +94,7 @@ public class PedidoMB{
         setMensagem("Pedido realizado!");
         this.itens = new ArrayList<>();
         this.pedido = new Pedido();
-        return "/faces/cliente/pedido.xhtml";
+        return "homeC";
     }
     
 }

@@ -51,11 +51,11 @@ public class PratoMB{
             this.pratos.add(prato);
             this.prato = new Prato();
             adicionaMensagem("Prato adicionado com sucesso!","destinoAviso");
-            return "/faces/funcionario/cadastro_prato.xhtml";
+            return "prato";
         }
         else{
             adicionaMensagem("Prato não adicionado! O prato já existe!","destinoAviso");
-            return "/faces/funcionario/cadastro_prato.xhtml";
+            return "prato";
         }
     }
     
@@ -64,7 +64,7 @@ public class PratoMB{
         pra.delete(prato);
         this.pratos.remove(prato);
         adicionaMensagem("Prato removido com sucesso!","destinoAviso");
-        return "/faces/funcionario/cadastro_prato.xhtml";
+        return "prato";
     }
     
     private void adicionaMensagem(String mensagem, String destino){

@@ -8,11 +8,11 @@
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>homeC</from-outcome>
-            <to-view-id>/cliente/index.xhtml</to-view-id>
+            <to-view-id>/cliente/homeC.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>homeF</from-outcome>
-            <to-view-id>/admin/index.xhtml</to-view-id>
+            <to-view-id>/admin/cadastro_funcionario.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>login</from-outcome>
@@ -35,13 +35,6 @@
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
-            <from-outcome>funcionario</from-outcome>
-            <to-view-id>/funcionario/cadastro_funcionario.xhtml</to-view-id>
-        </navigation-case>        
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
             <from-outcome>prato</from-outcome>
             <to-view-id>/funcionario/cadastro_prato.xhtml</to-view-id>
         </navigation-case>        
@@ -50,7 +43,7 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>homeF</from-outcome>
-            <to-view-id>/funcionario/homeF.xhtml</to-view-id>
+            <to-view-id>/funcionario/cadastro_funcionario.xhtml</to-view-id>
         </navigation-case>        
     </navigation-rule>  
     <navigation-rule>
@@ -66,13 +59,6 @@
         <navigation-case>
             <from-outcome>homeC</from-outcome>
             <to-view-id>/cliente/homeC.xhtml</to-view-id>
-        </navigation-case>        
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>*</from-view-id>
-        <navigation-case>
-            <from-outcome>pedido</from-outcome>
-            <to-view-id>/cliente/pedido.xhtml</to-view-id>
         </navigation-case>        
     </navigation-rule>
     

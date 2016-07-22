@@ -142,14 +142,14 @@ public class ClienteMB{
             
             if (cli.salvar(cliente)) {
                 this.adicionaMensagem("Cadastro feito com sucesso! Realize login!","destinoAviso");
-                return "/faces/login.xhtml";
+                return "login";
             } else {
                 this.adicionaMensagem("Já existe um usuario com este login (telefone)!","destinoAviso");
-                return "/faces/cadastro_cliente.xhtml";
+                return "cliente";
             }
         } catch (Exception e) {
             this.adicionaMensagem("Houve um erro no cadastro! Tente novamente!","destinoAviso");
-            return "/faces/cadastro_cliente.xhtml";
+            return "cliente";
         }  
         
     }

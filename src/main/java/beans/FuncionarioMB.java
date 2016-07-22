@@ -129,7 +129,7 @@ public class FuncionarioMB{
         
         adicionaMensagem("Cadastro feito com sucesso!","destinoAviso");
         
-        return "/funcionario/cadastro_funcionario.xhtml?faces-redirect=true";
+        return "homeF";
     }
     
     private void adicionaMensagem(String mensagem, String destino){

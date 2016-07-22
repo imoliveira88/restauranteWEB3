@@ -6,6 +6,7 @@
 package beans;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -51,32 +52,42 @@ public class LoginBean implements Serializable{
 
     //Compara se o telefone digitado corresponde a um usuário válido, e, correspondendo,
     //compara a senha fornecida, com a senha que há no banco
-    public boolean validaUsuario(){
+    public boolean validaUsuario()throws SQLException{
         UsuarioServico ud = new UsuarioServico();
-        return this.senha.equals(ud.retornaUsuario(this.telefone).getSenha());
+        try {
+            String senhaRetornada = ud.retornaUsuario(this.telefone).getSenha();
+            return this.senha.equals(senhaRetornada);
+        } catch (Exception e) {
+            return false;
+        }
     }
     
-    public String doLogin() throws FacesException,ExceptionInInitializerError{
+    public String doLogin() throws FacesException,ExceptionInInitializerError,SQLException{
         boolean valido;
         char tipo;
         Usuario usu;
         
-        valido = this.validaUsuario();
-       
-        if (!valido) {
-            adicionaMensagem("Login ou senha incorretos!","destinoAviso");
-            return "/faces/login.xhtml?faces-redirect=true";
-        } else {
-            UsuarioServico ud = new UsuarioServico();
-            usu = ud.retornaUsuario(this.telefone);
-            
-            tipo = usu.tipo();
-            this.setNome(usu.getNome());
-            if (tipo == 'C') {
-                return "/faces/cliente/homeC.xhtml?faces-redirect=true";
+        try {
+            valido = this.validaUsuario();
+
+            if (!valido) {
+                adicionaMensagem("Login ou senha incorretos!", "destinoAviso");
+                return "login";
             } else {
-                return "/faces/funcionario/homeF.xhtml?faces-redirect=true";
+                UsuarioServico ud = new UsuarioServico();
+                usu = ud.retornaUsuario(this.telefone);
+
+                tipo = usu.tipo();
+                this.setNome(usu.getNome());
+                if (tipo == 'C') {
+                    return "homeC";
+                } else {
+                    return "homeF";
+                }
             }
+        } catch (Exception e) {
+            adicionaMensagem("Login ou senha incorretos!", "destinoAviso");
+            return "login";
         }
    
       }
