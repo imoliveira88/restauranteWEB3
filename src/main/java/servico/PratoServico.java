@@ -39,6 +39,20 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
         return super.getById(pk);
     }
     
+    public Prato getPrato(String pr){
+        String query = "select e from Prato e";
+        List<Prato> pratos = super.getEm().createQuery(query, Prato.class).getResultList();
+        try{
+            for(Prato prato : pratos){
+                if(prato.getNome().equals(pr)) return prato;
+            }
+            return null;
+        }
+        catch(NoResultException e){
+            return null;
+        }
+    }
+    
     public boolean existePrato(Prato p){
         String query = "select e from Prato e";
         List<Prato> pratos = super.getEm().createQuery(query, Prato.class).getResultList();
