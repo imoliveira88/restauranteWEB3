@@ -38,9 +38,16 @@ header#cabecalho{
 #box{
    padding: 5px 15px;
    width: 95%;
-   height: 800px;
    background-color: #FFC;
    margin: 0px auto;
+}
+
+.invalid{
+    padding-left: 4px;
+    font-weight: bold;
+    font-style: italic;
+    color: red;
+    background-color: white;
 }
 
 .anime {
@@ -211,4 +218,34 @@ table#menu td:hover{
     background: linear-gradient(bottom,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=0 ); /* IE6-9 */
     cursor:pointer;
+}
+
+/** chorme and safari **/ 
+::-webkit-input-placeholder { 
+    color: blue !important; 
+    font-weight: normal !important; 
+} 
+/** firefox **/ 
+:-moz-placeholder { 
+    color: blue !important; 
+    font-weight: normal !important; 
+} 
+/** IE **/ 
+.ui-watermark { 
+    color: blue !important; 
+    font-weight: normal !important; 
+}
+
+.flag{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#flags{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    
 }

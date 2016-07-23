@@ -2,12 +2,25 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
    <head><title>#{msgs.loginTitle}</title></head>
    <body>
       <ui:composition>
+         <f:view locale="#{localeMB.currentLocale}" contentType="text/html; charset=UTF-8" encoding="UTF-8"/>
          <header id="cabecalho">
-               <h:graphicImage class="logo" library="images" name="OxenteLogo.png"/>               
+               <h:graphicImage class="logo" library="images" name="OxenteLogo.png"/> 
+               <div id="flags">
+               <h:form>                
+                <h:commandLink action="#{localeMB.portugueseLocale}" > 
+                    <h:graphicImage library="images" name="bottom_br.png" class="flag" /> 
+                </h:commandLink>
+                <h:commandLink action="#{localeMB.englishLocale}"> 
+                    <h:graphicImage library="images" name="bottom_us.png" class="flag" /> 
+                </h:commandLink>
+                </h:form>
+                   </div>
          </header>
           
       </ui:composition>

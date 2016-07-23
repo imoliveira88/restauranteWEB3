@@ -27,7 +27,7 @@ public class ClienteMB{
     private String estado;
     private String nome;
     private String telefone;
-    private String senha;
+    private String senha = "";
     
     public ClienteMB() {
     }

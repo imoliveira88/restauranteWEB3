@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
  
 @ManagedBean
+@ViewScoped
 public class ImagesView {
      
     private List<String> images;
@@ -14,11 +16,11 @@ public class ImagesView {
     public void init() {
         images = new ArrayList<>();
         images.add("Arrumadinho.png");
-        images.add("Baião de dois.png");
-        images.add("Bobó de camarão.png");
-        images.add("Bode Guisado.png");
+        images.add("Baião.png");
+        images.add("Bobó.png");
+        images.add("BodeGuisado.png");
         images.add("Buchada.png");
-        images.add("Carne de sol.png");
+        images.add("CarneDeSol.png");
         images.add("Dobradinha.png");
         images.add("Feijoada.png");
         images.add("Moranga.png");
