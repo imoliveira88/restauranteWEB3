@@ -18,35 +18,35 @@
             <table>
                 <tr>
                     <td>
-                        <h:form>
-                            <p:fieldset legend="Pedidos a atender" style="margin-bottom:20px">
+                        <h:form class="formGeral">
+                            <p:fieldset class="field" legend="#{msgs.pedidosParaAtender}" style="margin-bottom:20px">
                                 <p:dataTable var="pedido" value="#{pedido.pedidosNAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                                     <p:column>
                                         <f:facet name="header">ID</f:facet>
                                         <h:outputText value="#{pedido.id}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Cliente</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosCliente}</f:facet>
                                         <h:outputText value="#{pedido.cliente.nome}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Endereço de Entrega</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosEndereço}</f:facet>
                                         <h:outputText value="#{pedido.imprimeEndereco()}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Data</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosData}</f:facet>
                                         <h:outputText value="#{pedido.data}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Total</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosTotal}</f:facet>
                                         <h:outputText value="#{pedido.total}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Itens do Pedido</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosItens}</f:facet>
                                         <h:outputText value="#{pedido.imprimeItens()}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Atender</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosAtender}</f:facet>
                                         <h:commandButton value="Atender" action="#{pedido.atendePedido(pedido.id)}"/>
                                     </p:column>
                                 </p:dataTable>
@@ -57,23 +57,23 @@
 
                 <tr>
                     <td>
-                        <h:form>
-                            <p:fieldset legend="Pedidos atendidos" style="margin-bottom:20px">
+                        <h:form class="formGeral">
+                            <p:fieldset class="field" legend="#{msgs.pedidosAtendidos}" style="margin-bottom:20px">
                                 <p:dataTable var="pedido" value="#{pedido.pedidosAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                                     <p:column>
                                         <f:facet name="header">ID</f:facet>
                                         <h:outputText value="#{pedido.id}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Cliente</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosCliente}</f:facet>
                                         <h:outputText value="#{pedido.cliente.nome}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Data</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosData}</f:facet>
                                         <h:outputText value="#{pedido.data}"/>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Total</f:facet>
+                                        <f:facet name="header">#{msgs.pedidosTotal}</f:facet>
                                         <h:outputText value="#{pedido.total}"/>
                                     </p:column>
                                 </p:dataTable>

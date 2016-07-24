@@ -1,0 +1,6 @@
+    
+header#cabecalho{
+   background-image: url("#{resource['images/OxenteBg2.png']}") !important; 
+   background-repeat: repeat-x;
+   background-size: contain;
+}

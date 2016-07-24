@@ -4,6 +4,19 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    <application>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+            <supported-locale>pt_BR</supported-locale>
+            <supported-locale>en_US</supported-locale>
+        </locale-config>
+
+        <resource-bundle>
+            <base-name>extras.messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+    </application>
+    
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
@@ -12,7 +25,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>pedidos</from-outcome>
-            <to-view-id>/admin/pedidos.xhtml</to-view-id>
+            <to-view-id>/funcionario/pedidos.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>login</from-outcome>
@@ -41,6 +54,7 @@
         <navigation-case>
             <from-outcome>sair</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>        
     </navigation-rule>
     
@@ -74,11 +88,6 @@
         </navigation-case>        
     </navigation-rule>
     
-    <navigation-rule>
-        <navigation-case>
-            <from-outcome>inicio</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+
 
 </faces-config>

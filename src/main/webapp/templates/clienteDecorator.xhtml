@@ -12,6 +12,7 @@
     <h:body>
         <ui:composition>
             <h:outputStylesheet library="css" name="style.css"/>
+            <h:outputStylesheet library="css" name="style2.css"/>
             <div id="heading">
                 <ui:insert name="heading">
                     <ui:include src="/sections/login/header.xhtml"/>
@@ -19,17 +20,13 @@
             </div>
             <div id="sidebarLeft">
                 <ui:insert name="sidebarLeft">
-                    <ui:include src="/sections/login/sidebarLeft.xhtml"/>
+                    <ui:include src="/sections/login/sidebarLeftUser.xhtml"/>
                 </ui:insert>
             </div>
             <div id="content">
-            <table>
-            <tr>
-                <td>
-                    <h:form><h:commandButton class="botao" value="Logout" action="#{logoutBean.logout}"/></h:form>
-                </td>
-            </tr>
-            </table>
+                <h:form>
+                    <h:commandLink class="cmdLink" action="#{logoutBean.logout}" >#{msgs.menuFourF}</h:commandLink>
+                </h:form>
                 <ui:insert/>
             </div>
         </ui:composition>

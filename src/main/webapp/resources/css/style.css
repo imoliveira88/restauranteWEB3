@@ -175,10 +175,41 @@ table#corpo{
 }
 
 table#menu td:hover{
-	background-color: #ffffff;
+	background-color: #963;
 	font-weight: bold;
 	cursor: pointer;
-        color: #000000;        
+        
+}
+
+.cmdLink{
+    text-decoration:none;
+    color:white;
+    float: right;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.cmdLink:hover{
+    text-decoration:none;
+    color:yellow;
+    float: right;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.cmdLink2{
+    text-decoration:none;
+}
+
+.cmdLink2:hover{
+    text-decoration:none;
+    color:red;
+}
+
+.fotoPrato {
+    max-width:200px;
+    max-height:150px;
+    padding-left: 50px;
 }
 
 .formGeral{
@@ -186,6 +217,13 @@ table#menu td:hover{
     margin-right: auto;
     padding: 10px;
     width: 95%;
+}
+
+.formMenu{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 50%;
 }
 
 .destaque {

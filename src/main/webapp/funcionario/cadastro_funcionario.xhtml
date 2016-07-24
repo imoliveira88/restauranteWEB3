@@ -16,7 +16,7 @@
             <br/>
             <br/>
 
-            <h:form>
+            <h:form class="formGeral">
                 <p:growl id="msgs" for="destinoAviso" autoUpdate="true" showDetail="true" />
 
                 <p:fieldset class="field" legend="#{msgs.cdtLabelField1}">
@@ -155,11 +155,11 @@
                              <f:selectItem itemLabel="SP" itemValue="SP" />
                              <f:selectItem itemLabel="TO" itemValue="TO" />
                          </p:selectOneMenu>
-
+                         <h:commandButton value="#{msgs.cdtBtnSalvar}" class="botao" action="#{cadastroF.cadastraFuncionario}"/>
                      </h:panelGrid>
                  </p:fieldset>
 
-                <h:commandButton value="Cadastrar" action="#{cadastroF.cadastraFuncionario}"/>
+                
 
             </h:form> 
         </ui:decorate>
