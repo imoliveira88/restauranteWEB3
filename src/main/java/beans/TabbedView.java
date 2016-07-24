@@ -6,14 +6,16 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import modelo.Cliente;
 import modelo.ItemPedido;
 import modelo.Pedido;
 import modelo.Prato;
+import modelo.Usuario;
  
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
+import servico.PedidoServico;
 import servico.PratoServico;
  
 @ManagedBean
@@ -66,11 +68,11 @@ public class TabbedView {
         this.numero = numero;
     }  
 
-    public Pedido getPed() {
+    public Pedido getPedido() {
         return pedido;
     }
 
-    public void setPed(Pedido ped) {
+    public void setPedido(Pedido ped) {
         this.pedido = ped;
     }
     
@@ -93,6 +95,21 @@ public class TabbedView {
         pedido.addItem(ip);
         adicionaMensagem("Total atualizado: R$ " + pedido.getTotal(),"destinoAviso");
         return "homeC";
+    }
+    
+    public String fechaPedido(Usuario usu){
+        this.pedido.setCliente((Cliente) usu);
+        PedidoServico pedidoServico = new PedidoServico();
+        
+        pedidoServico.save(pedido);
+        
+        adicionaMensagem("Pedido feito! Total: R$ " + pedido.getTotal(),"destinoAviso");
+        return "homeC";
+    }
+    
+    private String fechaRedireciona(){
+        adicionaMensagem("Faça login para fechar seu pedido!","destinoAviso");
+        return "login";
     }
     
     private void adicionaMensagem(String mensagem, String destino){

@@ -43,13 +43,11 @@ import javax.faces.convert.FacesConverter;
     }
 
     protected void addAttribute(UIComponent component, BaseEntity o) {
-        String key = o.getId().toString(); 
+        String key = o.getId().toString();
         this.getAttributesFrom(component).put(key, o);
     }
 
     protected Map<String, Object> getAttributesFrom(UIComponent component) {
         return component.getAttributes();
     }
-
-
 }

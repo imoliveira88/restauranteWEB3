@@ -1,7 +1,7 @@
 package beans;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -11,7 +11,7 @@ import org.primefaces.event.FileUploadEvent;
 import servico.PratoServico;
 
 @ManagedBean(name = "pratoMB")
-@SessionScoped
+@RequestScoped
 public class PratoMB{
 
     private Prato prato;

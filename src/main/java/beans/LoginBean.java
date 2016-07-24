@@ -62,6 +62,16 @@ public class LoginBean implements Serializable{
         }
     }
     
+    public Usuario retornaUsuario()throws SQLException{
+        UsuarioServico ud = new UsuarioServico();
+        try {
+            Usuario usu = ud.retornaUsuario(this.telefone);
+            return usu;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
     public String doLogin() throws FacesException,ExceptionInInitializerError,SQLException{
         boolean valido;
         char tipo;
@@ -82,7 +92,7 @@ public class LoginBean implements Serializable{
                 if (tipo == 'C') {
                     return "homeC";
                 } else {
-                    return "homeF";
+                    return "pedidos";
                 }
             }
         } catch (Exception e) {

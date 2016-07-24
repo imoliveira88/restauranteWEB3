@@ -43,7 +43,7 @@ public class Prato implements Serializable, BaseEntity {
     private Double preco;
     
     @NotBlank
-    @Size(min = 3, max = 40)
+    @Size(min = 3, max = 300)
     @Column(name = "PRATO_DESCRICAO")
     private String descricao;
     

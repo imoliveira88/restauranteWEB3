@@ -19,7 +19,7 @@
             <table cellpadding="0" cellspacing="100px">
                 <tr>
                     <td>
-                        <h:form enctype="multipart/form-data">
+                        <h:form>
                             <p:growl id="msgs" showDetail="true" autoUpdate="true" for="destinoAviso"/>
                             <p:fieldset legend="Inserir pratos" style="margin-bottom:20px">
                                 <h:panelGrid columns="2">
@@ -50,7 +50,7 @@
 
                     </td>
                     <td>
-                        <h:form enctype="multipart/form-data">
+                        <h:form>
                             <p:fieldset legend="Pratos Cadastrados" style="margin-bottom:20px">
                                 <p:dataTable var="prato" value="#{pratoMB.pratos}" >
                                     <p:column>

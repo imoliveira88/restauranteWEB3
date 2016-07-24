@@ -19,50 +19,145 @@
             <h:form>
                 <p:growl id="msgs" for="destinoAviso" autoUpdate="true" showDetail="true" />
 
-                <p:fieldset legend="Informações Básicas" style="margin-bottom:20px">
-                    <h:panelGrid columns="2" id = "basico"  cellpadding="5">
+                <p:fieldset class="field" legend="#{msgs.cdtLabelField1}">
+                     <h:panelGrid columns="2" id = "basico"  cellpadding="5">
 
-                        <h:outputText value="Nome: " />
-                        <h:inputText value="#{cadastroF.nome}" size="37" />
+                         <p:outputLabel for="nome" value="#{msgs.cdtLabelNome}" />
+                         <h:panelGroup>
+                            <p:inputText id="nome" value="#{cadastroF.nome}" size="37" required="true"
+                                         converter="upperCaseConverter" requiredMessage="#{msgs.notNull}"
+                                         validatorMessage="#{msgs.validaNome}">
+                                <f:validateLength minimum="3" maximum="40" />
+                                <f:ajax event="blur" render="m_nome nome" />
+                            </p:inputText>
+                            <h:message id="m_nome" class="invalid" for="nome"/>
+                         </h:panelGroup>
+                             
 
-                        <h:outputText value="Telefone (será seu login): " />
-                        <h:inputText value="#{cadastroF.telefone}" size="12" />
+                         <p:outputLabel for="login" value="#{msgs.cdtLabelFone}" />
+                         <h:panelGroup>
+                            <p:inputText id="login" value="#{cadastroF.telefone}" size="14" required="true"
+                                         validatorMessage="#{msgs.validaFone}" requiredMessage="#{msgs.notNull}">
+                                <p:watermark for="login" value="(99)99999-9999" />
+                                <f:validateRegex pattern="\([1-9]{2}\)[2-9][0-9]{3,4}\-[0-9]{4}" />
+                                <f:ajax event="blur" render="m_login" />
+                            </p:inputText>
+                            <h:message id="m_login" class="invalid" for="login"/>
+                         </h:panelGroup>
 
-                        <h:outputText value="Senha: " />
-                        <h:inputSecret value="#{cadastroF.senha}" size="8" />
+                         <p:outputLabel for="senha" value="#{msgs.cdtLabelSenha}" />
+                         <h:panelGroup>
+                            <p:password id="senha" value="#{cadastroF.senha}" size="8" required="true"
+                                        validatorMessage="#{msgs.validaSenha}" requiredMessage="#{msgs.notNull}"
+                                        binding="#{passwordComponent}">
+                                <f:validateLength minimum="6" maximum="20" />
+                                <f:ajax event="blur" render="m_senha"/>
+                            </p:password>
+                            <h:message id="m_senha" class="invalid" for="senha"/>                             
+                         </h:panelGroup>
+                         
+                         <p:outputLabel for="confirmesenha" value="#{msgs.cdtLabelCheckSenha}" />
+                         <h:panelGroup>
+                            <p:password id="confirmesenha" size="8" 
+                                        required="#{not empty passwordComponent.value}"
+                                        requiredMessage="#{msgs.notNull}" >
+                                <f:validator validatorId="confirmPasswordValidator" />
+                                <f:attribute name="passwordComponent" value="#{passwordComponent}" />
+                                <f:ajax event="blur" execute="confirmesenha senha" render="m_confirme"/>
+                            </p:password>
+                            <h:message id="m_confirme" class="invalid" for="confirmesenha"/>
+                         </h:panelGroup>
 
-                        <h:outputText value="Cargo: " />
-                        <h:inputText value="#{cadastroF.cargo}" size="20" />
+                     </h:panelGrid>
+                 </p:fieldset>
 
-                        <h:outputText value="Salário: " />
-                        <h:inputText value="#{cadastroF.salario}" size="12" />
+                 <p:fieldset class="field" legend="#{msgs.cdtLabelEndereço}">
+                     <h:panelGrid columns="2" id = "endereco"  cellpadding="5">
 
-                    </h:panelGrid>
-                </p:fieldset>
+                         <p:outputLabel for="tipoLogradouro" value="#{msgs.cdtLabelTipoLogradouro}" />
+                         <p:selectOneMenu id="tipoLogradouro" value="#{cadastroF.tipologradouro}">
+                             <f:selectItem itemLabel="#{msgs.cdtLabelRua}" itemValue="#{msgs.cdtLabelRua}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelAv}" itemValue="#{msgs.cdtLabelAv}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelConj}" itemValue="#{msgs.cdtLabelConj}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelBeco}" itemValue="#{msgs.cdtLabelBeco}" />
+                             <f:selectItem itemLabel="#{msgs.cdtLabelTrav}" itemValue="#{msgs.cdtLabelTrav}" />
+                         </p:selectOneMenu>
+                         
+                         <p:outputLabel for="logradouro" value="#{msgs.cdtLabelLogradouro}" />
+                         <h:panelGroup>
+                         <p:inputText id="logradouro" value="#{cadastroF.logradouro}" size="37" required="true"
+                                      converter="upperCaseConverter" requiredMessage="#{msgs.notNull}" >
+                             <f:ajax event="blur" render="m_logradouro logradouro" />
+                         </p:inputText>
+                             <h:message id="m_logradouro" class="invalid" for="logradouro"/>
+                         </h:panelGroup>
 
-                <p:fieldset legend="Endereço" style="margin-bottom:20px">
-                    <h:panelGrid columns="2" id = "endereco"  cellpadding="5">
+                         <p:outputLabel for="numero" value="#{msgs.cdtLabelNumero}" />
+                         <h:panelGroup>
+                         <p:inputText id="numero" value="#{cadastroF.numero}" size="5" 
+                                      required="true" requiredMessage="#{msgs.notNull}" >
+                             <f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+                             <f:ajax event="blur" render="m_numero" />
+                         </p:inputText>
+                             <h:message id="m_numero" class="invalid" for="numero"/>
+                         </h:panelGroup>
 
-                        <h:outputText value="Tipo Logradouro: " />
-                        <h:inputText value="#{cadastroF.tipologradouro}" size="10" />
+                         <p:outputLabel for="cep" value="#{msgs.cdtLabelCep}" />
+                         <h:panelGroup>
+                         <p:inputText id="cep" value="#{cadastroF.cep}" size="10" 
+                                      required="true" requiredMessage="#{msgs.notNull}" 
+                                      validatorMessage="#{msgs.validaCep}" >
+                             <p:watermark for="cep" value="99999-999" />
+                             <f:validateRegex pattern="[0-9]{5}\-[0-9]{3}" />
+                             <f:ajax event="blur" render="m_cep" />                         
+                         </p:inputText>
+                             <h:message id="m_cep" class="invalid" for="cep"/>
+                         </h:panelGroup>
 
-                        <h:outputText value="Logradouro: " />
-                        <h:inputText value="#{cadastroF.logradouro}" size="37" />
+                         <p:outputLabel for="cidade" value="#{msgs.cdtLabelCidade}" />
+                         <h:panelGroup>
+                         <p:inputText id="cidade" value="#{cadastroF.cidade}" size="20" converter="upperCaseConverter"
+                                      required="true" requiredMessage="#{msgs.notNull}" 
+                                      validatorMessage="#{msgs.validaCidade}">
+                                <f:validateLength minimum="2" maximum="40" />
+                             <f:ajax event="blur" render="m_cidade cidade"/>
+                         </p:inputText>
+                             <h:message id="m_cidade" class="invalid" for="cidade"/>
+                         </h:panelGroup>
+                         
+                         <p:outputLabel for="estado" value="#{msgs.cdtLabelEstado}" />
+                         <p:selectOneMenu id="estado" value="#{cadastroF.estado}">
+                             <f:selectItem itemLabel="AC" itemValue="AC" />
+                             <f:selectItem itemLabel="AL" itemValue="AL" />
+                             <f:selectItem itemLabel="AM" itemValue="AM" />
+                             <f:selectItem itemLabel="AP" itemValue="AP" />
+                             <f:selectItem itemLabel="BA" itemValue="BA" />
+                             <f:selectItem itemLabel="CE" itemValue="CE" />
+                             <f:selectItem itemLabel="DF" itemValue="DF" />
+                             <f:selectItem itemLabel="ES" itemValue="ES" />
+                             <f:selectItem itemLabel="GO" itemValue="GO" />
+                             <f:selectItem itemLabel="MA" itemValue="MA" />
+                             <f:selectItem itemLabel="MG" itemValue="MG" />
+                             <f:selectItem itemLabel="MT" itemValue="MT" />
+                             <f:selectItem itemLabel="MS" itemValue="MS" />
+                             <f:selectItem itemLabel="PA" itemValue="PA" />
+                             <f:selectItem itemLabel="PB" itemValue="PB" />
+                             <f:selectItem itemLabel="PE" itemValue="PE" />
+                             <f:selectItem itemLabel="PI" itemValue="PI" />
+                             <f:selectItem itemLabel="PR" itemValue="PR" />
+                             <f:selectItem itemLabel="RJ" itemValue="RJ" />
+                             <f:selectItem itemLabel="RN" itemValue="RN" />
+                             <f:selectItem itemLabel="RO" itemValue="RO" />
+                             <f:selectItem itemLabel="RR" itemValue="RR" />
+                             <f:selectItem itemLabel="RS" itemValue="RS" />
+                             <f:selectItem itemLabel="SC" itemValue="SC" />
+                             <f:selectItem itemLabel="SE" itemValue="SE" />
+                             <f:selectItem itemLabel="SP" itemValue="SP" />
+                             <f:selectItem itemLabel="TO" itemValue="TO" />
+                         </p:selectOneMenu>
 
-                        <h:outputText value="Número: " />
-                        <h:inputText value="#{cadastroF.numero}" size="5" />
-
-                        <h:outputText value="CEP: " />
-                        <h:inputText value="#{cadastroF.cep}" size="10" />
-
-                        <h:outputText value="Cidade: " />
-                        <h:inputText value="#{cadastroF.cidade}" size="20" />
-
-                        <h:outputText value="Estado: " />
-                        <h:inputText value="#{cadastroF.estado}" size="2" />
-
-                    </h:panelGrid>
-                </p:fieldset>
+                     </h:panelGrid>
+                 </p:fieldset>
 
                 <h:commandButton value="Cadastrar" action="#{cadastroF.cadastraFuncionario}"/>
 

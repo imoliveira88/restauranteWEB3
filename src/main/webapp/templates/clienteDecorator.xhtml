@@ -23,10 +23,11 @@
                 </ui:insert>
             </div>
             <div id="content">
-            <table id="menu">
+            <table>
             <tr>
-                <td onclick="location.href='/login.xhtml'">#{msgs.menuOneC}</td>
-                <td onclick="location.href='/cliente/homeC.xhtml'">#{msgs.menuTwoC}</td>
+                <td>
+                    <h:form><h:commandButton class="botao" value="Logout" action="#{logoutBean.logout}"/></h:form>
+                </td>
             </tr>
             </table>
                 <ui:insert/>

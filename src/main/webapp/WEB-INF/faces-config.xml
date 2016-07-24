@@ -11,9 +11,21 @@
             <to-view-id>/cliente/homeC.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-outcome>homeF</from-outcome>
-            <to-view-id>/admin/cadastro_funcionario.xhtml</to-view-id>
+            <from-outcome>pedidos</from-outcome>
+            <to-view-id>/admin/pedidos.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>cliente</from-outcome>
+            <to-view-id>/cadastro_cliente.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/cadastro_cliente.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>login</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>

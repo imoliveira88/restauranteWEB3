@@ -21,8 +21,6 @@ public class FuncionarioMB{
     private String nome;
     private String telefone;
     private String senha;
-    private String cargo;
-    private Double salario;
     
     
     /**
@@ -101,29 +99,13 @@ public class FuncionarioMB{
 
     public void setSenha(String senha) {
         this.senha = senha;
-    } 
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public Double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(Double salario) {
-        this.salario = salario;
     }
     
     public String cadastraFuncionario() throws ParseException{
         FuncionarioServico funcionario = new FuncionarioServico();
         
         Endereco endereco = new Endereco(tipologradouro,logradouro,numero,cep,cidade,estado);
-        Funcionario func = new Funcionario(nome,senha,telefone,endereco,salario,cargo);
+        Funcionario func = new Funcionario(nome,senha,telefone,endereco);
 
         funcionario.save(func);
         

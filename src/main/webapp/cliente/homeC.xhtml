@@ -28,16 +28,16 @@
                                 <p:tab title="#{prato.nome}">
                                     <h:panelGrid columns="2" cellpadding="5">
                                         <h:panelGrid columns="2" cellpadding="5">
-                                            <p:outputLabel for="imagem" value="Imagem" style="font-weight: bold"/>
+                                            <p:outputLabel for="imagem" value="#{msgs.cardapioImagem}" style="font-weight: bold"/>
                                             <h:graphicImage id="imagem" value="/imagens/#{prato.imagem}" width="100px" height="100px"/>
 
-                                            <p:outputLabel for="preco" value="Preço" style="font-weight: bold"/>
+                                            <p:outputLabel for="preco" value="#{msgs.cardapioPreco}" style="font-weight: bold"/>
                                             <h:outputText id="preco" value="#{prato.preco}"/>
 
-                                            <p:outputLabel for="descricao" value="Descrição" style="font-weight: bold"/>
+                                            <p:outputLabel for="descricao" value="#{msgs.cardapioDescricao}" style="font-weight: bold"/>
                                             <h:outputText id="descricao" value="#{prato.descricao}"/>
 
-                                            <p:outputLabel for="numero" value="Quantidade" style="font-weight: bold"/>
+                                            <p:outputLabel for="numero" value="#{msgs.cardapioQuantidade}" style="font-weight: bold"/>
                                             <p:selectOneMenu id="numero" value="#{tabbedView.numero}">
                                                 <f:selectItem itemLabel="1" itemValue="1" />
                                                 <f:selectItem itemLabel="2" itemValue="2" />
@@ -47,11 +47,33 @@
                                             </p:selectOneMenu>
 
                                         </h:panelGrid>
-                                        <h:commandButton id="add" class="botao" value="Adicionar" action="#{tabbedView.adicionaItem(prato.nome)}" />
+                                        <h:commandButton id="add" class="botaoAdd" value="#{msgs.cardapioAdicionar}" action="#{tabbedView.adicionaItem(prato.nome)}" />
                                     </h:panelGrid>
                                 </p:tab>
 
                             </p:accordionPanel>
+                            
+                            <p:fieldset legend="#{msgs.cardapioItens}" style="margin-bottom:20px">
+                                <p:dataTable var="item" value="#{tabbedView.itens}" >
+                                <p:column>
+                                    <f:facet name="header">#{msgs.cardapioPrato}</f:facet>
+                                    <h:outputText value="#{item.prato.nome}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">#{msgs.cardapioQuantidade}</f:facet>
+                                    <h:outputText value="#{item.quantidade}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Subtotal</f:facet>
+                                    <h:outputText value="R$ #{item.subtotal}"/>
+                                </p:column>    
+                            </p:dataTable>
+                                
+                            <p:outputLabel for="total" value="#{msgs.cardapioTotal}" style="font-weight: bold"/>
+                            <h:outputText id="total" value="#{tabbedView.pedido.total}" style="font-weight: bold"/>
+                        </p:fieldset>
+                            
+                            <h:commandButton id="fechar" class="botaoFecha" value="#{msgs.cardapioFecha}" action="#{tabbedView.fechaPedido(loginBean.retornaUsuario())}" />
                         </h:form>
 
                     </td>
