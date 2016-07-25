@@ -87,14 +87,19 @@ public class TabbedView {
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
-    public String adicionaItem(String prato){
+    public String adicionaItem(String prato, String destino){
         PratoServico ps = new PratoServico();
         Prato p = ps.getPrato(prato);
         ItemPedido ip = new ItemPedido(p,this.numero,pedido);
         this.itens.add(ip);
         pedido.addItem(ip);
         adicionaMensagem("Total atualizado: R$ " + pedido.getTotal(),"destinoAviso");
-        return "homeC";
+        return destino;
+    }
+    
+    public String fechaRedireciona(){
+        adicionaMensagem("Faça login para fechar seu pedido!","destinoAviso");
+        return "login";
     }
     
     public String fechaPedido(Usuario usu){
@@ -105,11 +110,6 @@ public class TabbedView {
         
         adicionaMensagem("Pedido feito! Total: R$ " + pedido.getTotal(),"destinoAviso");
         return "homeC";
-    }
-    
-    public String fechaRedireciona(){
-        adicionaMensagem("Faça login para fechar seu pedido!","destinoAviso");
-        return "login";
     }
     
     private void adicionaMensagem(String mensagem, String destino){

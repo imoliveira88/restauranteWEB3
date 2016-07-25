@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.NotBlank;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 @Entity
 @NamedQuery(name = "Prato.RetornaId",query= " SELECT max(u.id) FROM Prato u WHERE u.nome = :nome")
@@ -54,6 +52,7 @@ public class Prato implements Serializable, BaseEntity {
     @Transient
     private ArrayList<Prato> pratos;
 
+    @Override
     public Long getId() {
         return id;
     }

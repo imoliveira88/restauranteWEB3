@@ -22,10 +22,12 @@
         <navigation-case>
             <from-outcome>homeC</from-outcome>
             <to-view-id>/cliente/homeC.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>pedidos</from-outcome>
             <to-view-id>/funcionario/pedidos.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>login</from-outcome>
@@ -87,7 +89,15 @@
             <to-view-id>/cliente/homeC.xhtml</to-view-id>
         </navigation-case>        
     </navigation-rule>
-    
 
+    <navigation-case>
+        <from-outcome>login</from-outcome>
+        <to-view-id>/login.xhtml</to-view-id>
+    </navigation-case>        
+    
+    <navigation-case>
+        <from-outcome>home</from-outcome>
+        <to-view-id>/home.xhtml</to-view-id>
+    </navigation-case>    
 
 </faces-config>

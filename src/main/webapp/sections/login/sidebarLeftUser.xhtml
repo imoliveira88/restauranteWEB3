@@ -11,9 +11,7 @@
              <h:graphicImage class="anuncio" library="images" name="Anuncio.gif"/>
             <div class="welcomeText">
                 <p>#{msgs.clienteWelcome}</p>  
-                <h:outputFormat value="#{msgs['clienteNome']}">
-                    <f:param value="#{msgs.clienteNome}" />
-                </h:outputFormat>  
+                <h:outputText value="#{loginBean.nome}" />
             </div>
          </div>	   	
       </ui:composition>
