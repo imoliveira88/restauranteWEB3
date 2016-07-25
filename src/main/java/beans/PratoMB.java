@@ -59,11 +59,19 @@ public class PratoMB{
         }
     }
     
-    public String excluir() throws Exception{
+    public String excluir(Prato pr) throws Exception{
         PratoServico pra = new PratoServico();
-        pra.delete(prato);
-        this.pratos.remove(prato);
+        pra.delete(pr);
+        this.pratos.remove(pr);
         adicionaMensagem("Prato removido com sucesso!","destinoAviso");
+        return "prato";
+    }
+    
+    public String atualizar(Prato pr) throws Exception{
+        PratoServico pra = new PratoServico();
+        pra.update(pr);
+
+        adicionaMensagem("Prato editado com sucesso!","destinoAviso");
         return "prato";
     }
     

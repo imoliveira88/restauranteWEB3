@@ -16,7 +16,7 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
         super();
     }
     
-    //@Override
+    @Override
     public void delete(Prato prato) throws Exception{
         super.getEm().getTransaction().begin();
         Query query = super.getEm().createNamedQuery("Prato.RetornaId");
@@ -28,11 +28,20 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
         
         try{
             super.getEm().remove(p);
-            System.out.println("Apagandoooo");
             super.getEm().getTransaction().commit();
         }catch(Exception e){
             
         }
+    }
+    
+    @Override
+    public void update(Prato pr){
+        super.getEm().getTransaction().begin();
+        Prato prato = getPrato(pr.getNome());
+        prato = super.getEm().merge(prato);
+        prato.setDescricao(pr.getDescricao());
+        prato.setDescricao(pr.getDescricao());
+        super.getEm().getTransaction().commit();
     }
 
     public Prato getById(long pk) {
@@ -58,12 +67,8 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
         List<Prato> pratos = super.getEm().createQuery(query, Prato.class).getResultList();
         try{
             for(Prato prato : pratos){
-                if(prato.equals(p)){
-                    System.out.println("RETORNOU VERDADEIROO");
-                    return true;
-                }
+                if(prato.equals(p))return true;
             }
-            System.out.println("RETORNOU FALSO");
             return false;
         }
         catch(NoResultException e){

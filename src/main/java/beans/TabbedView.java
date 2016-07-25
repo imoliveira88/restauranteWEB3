@@ -107,7 +107,7 @@ public class TabbedView {
         return "homeC";
     }
     
-    private String fechaRedireciona(){
+    public String fechaRedireciona(){
         adicionaMensagem("Faça login para fechar seu pedido!","destinoAviso");
         return "login";
     }

@@ -69,7 +69,7 @@
                         <p:outputLabel for="total" value="#{msgs.cardapioTotal}" style="font-weight: bold"/>
                         <h:outputText id="total" value="#{tabbedView.pedido.total}" style="font-weight: bold"/><br/>
                     
-                    <h:commandButton id="fechar" class="botao" value="#{msgs.cardapioFecha}" action="#{tabbedView.fechaRedireciona}" />
+                        <h:commandButton id="fechar" class="botao" value="#{msgs.cardapioFecha}" action="#{tabbedView.fechaPedido(loginBean.retornaUsuario())}" />
                     </p:fieldset>
 
                     
