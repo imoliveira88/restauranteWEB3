@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ie="http://xmlns.jcp.org/jsf/composite/iee">
+    
     <h:head>
         <title>#{msgs.titleLogin}</title> 
         <h:outputStylesheet library="css" name="style.css"/>
@@ -19,8 +20,6 @@
                 <h:form id="login" class="formGeral">
                     <p:fieldset class="field" legend="Login" >
                         <p:growl id="growl" for="destinoAviso" showDetail="true" life="2000" autoUpdate="true"/>
-
-
                         <ie:logincomp/>
                         <div id="box">
                             <p:contentFlow value="#{imagesView.images}" var="image">

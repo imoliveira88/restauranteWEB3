@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:cc="http://xmlns.jcp.org/jsf/composite"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <!-- INTERFACE -->
     <cc:interface>
@@ -14,10 +15,23 @@
         <h:panelGrid columns="2" cellpadding="5">
 
             <h:outputText value="#{msgs.labelLogin}"/>
-            <h:inputText id="telefone" value="#{loginBean.telefone}" size="20" required="true"/>
+            <h:panelGroup>
+            <p:inputText id="login" value="#{loginBean.telefone}" size="20" 
+                         required="true" requiredMessage="#{msgs.notNull}">
+                <p:watermark for="login" value="(99)99999-9999" />                
+                <f:ajax event="blur" render="m_login" />
+            </p:inputText>
+                <h:message id="m_login" class="invalid" for="login"/>
+            </h:panelGroup>
 
             <h:outputText value="#{msgs.labelPassword}"/>
-            <h:inputSecret id="senha" value="#{loginBean.senha}" size="20" required="true" />
+            <h:panelGroup>
+            <p:password id="senha" value="#{loginBean.senha}" size="20" 
+                           required="true" requiredMessage="#{msgs.notNull}">
+                <f:ajax event="blur" render="m_senha"/>
+            </p:password>
+                <h:message id="m_senha" class="invalid" for="senha"/>
+            </h:panelGroup>
 
             <h:outputText/>
             <h:commandButton value="#{msgs.btnLogin}" action="#{loginBean.doLogin()}" class="botao"/>

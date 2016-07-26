@@ -28,7 +28,7 @@ header#cabecalho{
    border: black;
    padding: 5px;
    width: 200px;
-   height: 1000px;
+   height: 5000px;
    background-image: url("#{resource['images/sisal.jpg']}");
    background-repeat: repeat-y;
    background-size: contain;
@@ -207,7 +207,7 @@ table#menu td:hover{
 }
 
 .fotoPrato {
-    max-width:200px;
+    max-width:230px;
     max-height:150px;
     padding-left: 50px;
 }

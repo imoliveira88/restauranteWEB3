@@ -83,7 +83,7 @@ public class Pedido implements Serializable {
     }
 
     public double getTotal() {
-        return Math.round(100*this.total)/100;
+        return this.total;
     }
 
     public Date getData() {

@@ -27,7 +27,9 @@
                                 <h:panelGrid columns="2" cellpadding="5">
 
                                     <p:outputLabel for="preco" value="#{msgs.cardapioPreco}" style="font-weight: bold"/>
-                                    <h:outputText id="preco" value="#{prato.preco}"/>
+                                    <h:outputText id="preco" value="#{prato.preco}">
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                                    </h:outputText>
 
                                     <p:outputLabel for="descricao" value="#{msgs.cardapioDescricao}" style="font-weight: bold"/>
                                     <h:outputText id="descricao" value="#{prato.descricao}"/>
@@ -63,7 +65,7 @@
                             <p:column>
                                 <f:facet name="header">Subtotal</f:facet>
                                 <h:outputText value="R$ #{item.subtotal}"/>
-                            </p:column>
+                            </p:column> 
                             <p:column>
                                 <f:facet name="header">Excluir item</f:facet>
                                 <h:commandButton value="Excluir" action="#{tabbedView.excluiItem(item,'homeC')}"/>
