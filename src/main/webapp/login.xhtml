@@ -20,7 +20,7 @@
                 <h:form id="login" class="formGeral">
                     <p:fieldset class="field" legend="Login" >
                         <p:growl id="growl" for="destinoAviso" showDetail="true" life="2000" autoUpdate="true"/>
-                        <ie:logincomp/>
+                        <ie:logincomp  logiee="#{loginBean}"/>
                         <div id="box">
                             <p:contentFlow value="#{imagesView.images}" var="image">
                                 <p:graphicImage name="images/demo/#{image}" styleClass="content" />
