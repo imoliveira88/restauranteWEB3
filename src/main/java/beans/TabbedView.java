@@ -97,6 +97,13 @@ public class TabbedView {
         return destino;
     }
     
+    public String excluiItem(ItemPedido item, String destino){
+        this.pedido.removeItem(item);
+        this.itens.remove(item);
+        adicionaMensagem("Item excluído! Total atualizado: R$ " + pedido.getTotal(),"destinoAviso");
+        return destino;
+    }
+    
     public String fechaRedireciona(){
         adicionaMensagem("Faça login para fechar seu pedido!","destinoAviso");
         return "login";

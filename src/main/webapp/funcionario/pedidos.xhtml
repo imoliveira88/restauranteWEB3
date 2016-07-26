@@ -20,7 +20,7 @@
                     <td>
                         <h:form class="formGeral">
                             <p:fieldset class="field" legend="#{msgs.pedidosParaAtender}" style="margin-bottom:20px">
-                                <p:dataTable var="pedido" value="#{pedido.pedidosNAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+                                <p:dataTable var="pedido" value="#{pedidoMB.pedidosNAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                                     <p:column>
                                         <f:facet name="header">ID</f:facet>
                                         <h:outputText value="#{pedido.id}"/>
@@ -47,7 +47,7 @@
                                     </p:column>
                                     <p:column>
                                         <f:facet name="header">#{msgs.pedidosAtender}</f:facet>
-                                        <h:commandButton value="Atender" action="#{pedido.atendePedido(pedido.id)}"/>
+                                        <h:commandButton value="Atender" action="#{pedidoMB.atendePedido(pedido.id)}"/>
                                     </p:column>
                                 </p:dataTable>
                             </p:fieldset>
@@ -59,7 +59,7 @@
                     <td>
                         <h:form class="formGeral">
                             <p:fieldset class="field" legend="#{msgs.pedidosAtendidos}" style="margin-bottom:20px">
-                                <p:dataTable var="pedido" value="#{pedido.pedidosAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
+                                <p:dataTable var="pedido" value="#{pedidoMB.pedidosAtendidos}" rows="10" paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}">
                                     <p:column>
                                         <f:facet name="header">ID</f:facet>
                                         <h:outputText value="#{pedido.id}"/>

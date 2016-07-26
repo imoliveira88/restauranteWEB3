@@ -1,21 +1,21 @@
 package beans;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import modelo.Prato;
 import org.primefaces.event.FileUploadEvent;
 import servico.PratoServico;
 
 @ManagedBean(name = "pratoMB")
-@RequestScoped
-public class PratoMB{
+@SessionScoped
+public class PratoMB {
 
     private Prato prato;
-    private List<Prato> pratos;
+    private List<Prato> pratos; 
 
     public PratoMB() {
         this.prato = new Prato();
@@ -41,7 +41,6 @@ public class PratoMB{
 
     public void uploadAction(FileUploadEvent event) {
         this.prato.setImagem(event.getFile().getFileName());
-        
     }
 
     public String salvar() {
@@ -61,14 +60,18 @@ public class PratoMB{
     
     public String excluir(Prato pr) throws Exception{
         PratoServico pra = new PratoServico();
-        pra.delete(pr);
-        this.pratos.remove(pr);
-        adicionaMensagem("Prato removido com sucesso!","destinoAviso");
+        if(pra.deletar(pr)){
+            this.pratos.remove(pr);
+            adicionaMensagem("Prato removido com sucesso!","destinoAviso");
+        }else{
+            adicionaMensagem("Prato não pode ser removido, pois pertence a algum item de pedido já feito!","destinoAviso");
+        }
         return "prato";
     }
     
     public String atualizar(Prato pr) throws Exception{
         PratoServico pra = new PratoServico();
+        System.out.println("Prato preçooooooo: " + pr.getPreco());
         pra.update(pr);
 
         adicionaMensagem("Prato editado com sucesso!","destinoAviso");

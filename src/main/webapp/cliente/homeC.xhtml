@@ -63,7 +63,11 @@
                             <p:column>
                                 <f:facet name="header">Subtotal</f:facet>
                                 <h:outputText value="R$ #{item.subtotal}"/>
-                            </p:column>    
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Excluir item</f:facet>
+                                <h:commandButton value="Excluir" action="#{tabbedView.excluiItem(item,'homeC')}"/>
+                            </p:column>
                         </p:dataTable>
 
                         <p:outputLabel for="total" value="#{msgs.cardapioTotal}" style="font-weight: bold"/>

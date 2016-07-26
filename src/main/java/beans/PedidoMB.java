@@ -97,4 +97,18 @@ public class PedidoMB{
         return "homeC";
     }
     
+    public List<Pedido> getPedidosNAtendidos(){
+        return new PedidoServico().pedidosNAtendidos();
+    }
+    
+    public List<Pedido> getPedidosAtendidos(){
+        return new PedidoServico().pedidosAtendidos();
+    }
+    
+    public String atendePedido(Long id){
+        PedidoServico pd = new PedidoServico();
+        pd.pedidoAtende(id);
+        return "pedidos";
+    }
+    
 }

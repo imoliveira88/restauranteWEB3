@@ -5,6 +5,7 @@
  */
 package servico;
 
+import java.sql.SQLException;
 import java.util.List;
 import modelo.Prato;
 import javax.persistence.NoResultException;
@@ -16,8 +17,7 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
         super();
     }
     
-    @Override
-    public void delete(Prato prato) throws Exception{
+    public boolean deletar(Prato prato) throws Exception,SQLException{
         super.getEm().getTransaction().begin();
         Query query = super.getEm().createNamedQuery("Prato.RetornaId");
         query.setParameter("nome", prato.getNome());
@@ -29,8 +29,9 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
         try{
             super.getEm().remove(p);
             super.getEm().getTransaction().commit();
+            return true;
         }catch(Exception e){
-            
+            return false;
         }
     }
     
@@ -38,9 +39,11 @@ public class PratoServico extends DAOGenericoJPA<Long, Prato>{
     public void update(Prato pr){
         super.getEm().getTransaction().begin();
         Prato prato = getPrato(pr.getNome());
-        prato = super.getEm().merge(prato);
+        prato = super.getEm().find(Prato.class, prato.getId());
         prato.setDescricao(pr.getDescricao());
-        prato.setDescricao(pr.getDescricao());
+        System.out.println("Descricao: " + pr.getDescricao() + "  PREÇOOOOO: " + pr.getPreco());
+        prato.setPreco(pr.getPreco());
+        super.getEm().merge(prato);
         super.getEm().getTransaction().commit();
     }
 

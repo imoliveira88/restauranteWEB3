@@ -20,24 +20,25 @@
                 <tr>
                     <td>
                         <h:form enctype="multipart/form-data">
-                            <p:growl id="msgs" showDetail="true" autoUpdate="true" for="destinoAviso"/>
-                            <p:fieldset legend="Inserir pratos" style="margin-bottom:20px">
-                                <h:panelGrid columns="2">
-                                    Nome: <h:inputText value="#{pratoMB.prato.nome}" size="20"/>
-                                    Preço: <h:inputText value="#{pratoMB.prato.preco}" size="20"/>
-                                    Descrição: <h:inputTextarea rows="4" cols="20" value="#{pratoMB.prato.descricao}"/>
+                        <p:growl id="msgs" showDetail="true" for="destinoAviso"/>
+                        <p:fieldset legend="Inserir pratos" style="margin-bottom:20px">
+                            <h:panelGrid columns="2">
+                                Nome: <h:inputText value="#{pratoMB.prato.nome}"/>
+                                Preço: <h:inputText value="#{pratoMB.prato.preco}"/>
+                                Descrição: <h:inputTextarea rows="4" cols="20" value="#{pratoMB.prato.descricao}"/>
 
-                                    Foto: <p:fileUpload fileUploadListener="#{pratoMB.uploadAction}" label="Escolha" auto="true" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/" />
-                                    
-                                    <h:commandButton action="#{pratoMB.salvar}" value="Salvar" />
-                                </h:panelGrid> 
-                            </p:fieldset>
-                        </h:form>
+                                Foto: <p:fileUpload fileUploadListener="#{pratoMB.uploadAction}" label="Escolha" auto="true" update="messages" sizeLimit="10000000" oncomplete="uploadDialog.hide();" allowTypes="/(\.|\/)(gif|jpe?g|png|pdf)$/" />
+                                <p:growl id="messages" showDetail="true"/>
+
+                                <h:commandButton action="#{pratoMB.salvar}" value="Salvar" />
+                            </h:panelGrid> 
+                        </p:fieldset>
+                    </h:form>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h:form enctype="multpart/form-data">
+                        <h:form enctype="multipart/form-data">
                             <p:fieldset legend="Pratos Cadastrados" style="margin-bottom:20px">
                                 <p:dataTable var="prato" value="#{pratoMB.pratos}" editable="true" editMode="cell">
                                     <p:column>
@@ -51,15 +52,15 @@
                                     <p:column>
                                         <f:facet name="header">Preço</f:facet>
                                         <p:cellEditor>
+                                            <f:facet name="input"><h:inputText value="#{prato.preco}"/></f:facet>
                                             <f:facet name="output"><h:outputText value="#{prato.preco}" /></f:facet>
-                                            <f:facet name="input"><p:inputText value="#{prato.preco}"/></f:facet>
                                         </p:cellEditor>
                                     </p:column>
                                     <p:column>
                                         <f:facet name="header">Descrição</f:facet>
                                         <p:cellEditor>
                                             <f:facet name="output"><h:outputText value="#{prato.descricao}" /></f:facet>
-                                            <f:facet name="input"><p:inputText value="#{prato.descricao}"/></f:facet>
+                                            <f:facet name="input"><h:inputText value="#{prato.descricao}"/></f:facet>
                                         </p:cellEditor>
                                     </p:column>
                                     <p:column>

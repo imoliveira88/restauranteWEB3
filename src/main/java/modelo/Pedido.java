@@ -76,6 +76,11 @@ public class Pedido implements Serializable {
         this.itens.add(item);
         this.total += item.getSubtotal();
     }
+    
+    public void removeItem(ItemPedido item){
+        this.itens.remove(item);
+        this.total -= item.getSubtotal();
+    }
 
     public double getTotal() {
         return Math.round(100*this.total)/100;
@@ -89,20 +94,6 @@ public class Pedido implements Serializable {
         this.data = data;
     }
     
-    public List<Pedido> getPedidosNAtendidos(){
-        return new PedidoServico().pedidosNAtendidos();
-    }
-    
-    public List<Pedido> getPedidosAtendidos(){
-        return new PedidoServico().pedidosAtendidos();
-    }
-    
-    public String atendePedido(Long id){
-        PedidoServico pd = new PedidoServico();
-        pd.pedidoAtende(id);
-        return "/faces/funcionario/pedidos.xhtml";
-    }
-    
     public String imprimeItens(){
         String texto = "";
         for(ItemPedido item : itens){
@@ -113,7 +104,7 @@ public class Pedido implements Serializable {
     
     public String imprimeEndereco(){
         String texto = "";
-        texto += this.cliente.getEndereco().toString();
+        if(this.cliente != null) texto += this.cliente.getEndereco().toString();
         return texto;
     }
     
