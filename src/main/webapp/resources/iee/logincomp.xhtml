@@ -8,6 +8,7 @@
 
     <!-- INTERFACE -->
     <cc:interface>
+        <cc:attribute name="logiee"></cc:attribute>
     </cc:interface>
 
     <!-- IMPLEMENTATION -->
@@ -16,7 +17,7 @@
 
             <h:outputText value="#{msgs.labelLogin}"/>
             <h:panelGroup>
-            <p:inputText id="login" value="#{loginBean.telefone}" size="20" 
+                <p:inputText id="login" value="#{cc.attrs.logiee.telefone}" size="20" 
                          required="true" requiredMessage="#{msgs.notNull}">
                 <p:watermark for="login" value="(99)99999-9999" />                
                 <f:ajax event="blur" render="m_login" />
@@ -26,7 +27,7 @@
 
             <h:outputText value="#{msgs.labelPassword}"/>
             <h:panelGroup>
-            <p:password id="senha" value="#{loginBean.senha}" size="20" 
+            <p:password id="senha" value="#{cc.attrs.logiee.senha}" size="20" 
                            required="true" requiredMessage="#{msgs.notNull}">
                 <f:ajax event="blur" render="m_senha"/>
             </p:password>
@@ -34,7 +35,7 @@
             </h:panelGroup>
 
             <h:outputText/>
-            <h:commandButton value="#{msgs.btnLogin}" action="#{loginBean.doLogin()}" class="botao"/>
+            <h:commandButton value="#{msgs.btnLogin}" action="#{cc.attrs.logiee.doLogin()}" class="botao"/>
 
             <f:facet name="footer">
                 <a href='cadastro_cliente.xhtml' class="cmdLink2">#{msgs.notCadastro}</a>
